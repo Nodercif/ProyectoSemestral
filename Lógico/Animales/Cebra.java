@@ -6,4 +6,7 @@ public class Cebra extends Animal {
     public Cebra() {
         super();
     }
+    public String getSonido() {
+        return "gupiguip";
+    }
 }

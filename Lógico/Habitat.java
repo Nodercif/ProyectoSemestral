@@ -1,5 +1,4 @@
 package Lógico;
-
 import java.util.ArrayList;
 
 public class Habitat {
@@ -8,7 +7,6 @@ public class Habitat {
     private ArrayList<Animal> animal;
     private ArrayList<Alimento> alimento;
     public Habitat() {
-
     }
     public void addAnimal(Animal animal) {
     }

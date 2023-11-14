@@ -1,12 +1,10 @@
 package Lógico.Animales;
-
 import Lógico.Animal;
-
-public class Ajolote extends Animal {
-    public Ajolote() {
+public class Fennec extends Animal {
+    public Fennec() {
         super();
     }
     public String getSonido() {
-        return "gip";
+        return "gupiguip";
     }
 }

@@ -10,4 +10,13 @@ public class Habitat {
     public Habitat() {
 
     }
+    public void addAnimal(Animal animal) {
+    }
+    public void removeAnimal(Animal animal) {
+    }
+    public static void moverAnimal(Habitat habitat1, Habitat habitat2, Animal animal) {
+        habitat1.removeAnimal(animal);
+        habitat2.addAnimal(animal);
+        animal.setHabitat(habitat2);
+    }
 }

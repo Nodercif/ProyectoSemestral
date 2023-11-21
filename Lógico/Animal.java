@@ -1,20 +1,17 @@
 package Lógico;
 
 public abstract class Animal {
-    private int tempMax;
-    private int tempMin;
+    protected int tempMax = -99999;
+    protected int tempMin = -99999;
     private int humMax;
     private int humMin;
     private int metabolismo;
     private int hambre;
     private int ferocidad;
     private String nombre;
+
     private Habitat habitat;
     public Animal(int metabolismo, int ferocidad, String nombre, Habitat habitat){
-        tempMax = -69;
-        tempMin = -69;
-        humMax = -69;
-        humMin = -69;
         this.metabolismo = metabolismo;
         hambre = 0;
         this.ferocidad = ferocidad;
@@ -34,4 +31,5 @@ public abstract class Animal {
     }
     public abstract String getSonido();
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
+    public int getMaxTemp(){return this.tempMax;}
 }

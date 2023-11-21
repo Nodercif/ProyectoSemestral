@@ -1,8 +1,12 @@
 package Lógico.Animales;
 import Lógico.Animal;
-public class Hormiguero extends Animal {
-    public Hormiguero() {
-        super();
+import Lógico.Habitat;
 
+public class Hormiguero extends Animal {
+    public Hormiguero(int metabolismo, int ferocidad, String nombre, Habitat habitat) {
+        super(metabolismo,ferocidad,nombre,habitat);
+    }
+    public String getSonido() {
+        return null;//TODO
     }
 }

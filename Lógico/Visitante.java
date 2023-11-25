@@ -1,17 +1,14 @@
 package Lógico;
 
-import java.util.ArrayList;
 import java.util.Random;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 public class Visitante {
     protected Random rand = new Random();
     private static final String[] comentarios = {"uwu","me gusta el zoologico","xd"};
-    String nombre;
+    protected String nombre;
     Animal animalFavorito;
     public Visitante() {
-        this.nombre = GeneradorDeNombres.getInstance().nombreRandom();
+        this.nombre = InformacionVisitantes.getInstance().nombreRandom();
     }
     public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20);

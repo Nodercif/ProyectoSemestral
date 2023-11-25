@@ -3,9 +3,10 @@ package Lógico;
 import java.util.ArrayList;
 
 public class VisitanteVIP extends Visitante {
-    private ArrayList<String> ;
+    private ArrayList<String> comentarios;
     public VisitanteVIP() {
-        super();
+        this.nombre = InformacionVisitantes.getInstance().nombreRandomVIP();
+        this.comentarios = InformacionVisitantes.getInstance().getComentariosVIP(this.nombre);
     }
     public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20) + 20;
@@ -20,5 +21,9 @@ public class VisitanteVIP extends Visitante {
         ZooManager.getInstance().addMoney(satisfaccion);
         //TODO añadir mas comentarios de otros casos (habitat vacio, pocos animales...)
         return ret;
+    }
+    @Override
+    public String comentarioRandom(){
+        return comentarios.get(rand.nextInt(comentarios.size()));
     }
 }

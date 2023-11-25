@@ -2,13 +2,19 @@ import Lógico.*;
 import Lógico.Animales.*;
 
 import javax.swing.plaf.PanelUI;
+import java.util.ArrayList;
+
 public class MainProyecto {
     public static void main(String[] args){
-        Visitante vis1 = new Visitante();
-        Visitante vis2 = new Visitante();
-        Visitante vis3 = new VisitanteVIP();
-        System.out.println(vis1.getNombre() +": "+  vis1.comentarioRandom());
-        System.out.println(vis2.getNombre() +": "+  vis2.comentarioRandom());
-        System.out.println(vis3.getNombre() +": "+  vis3.comentarioRandom());
+        System.out.println("5 visitantes llegan");
+        ArrayList<Visitante> visitantes = new ArrayList<Visitante>();
+        for(int i = 0; i<4;i++){
+            visitantes.add(new Visitante());
+        }
+        visitantes.add(new VisitanteVIP());
+        System.out.println("veamos que dicen: \n");
+        for(Visitante v : visitantes){
+            System.out.println(v.getNombre()+" dice: "+v.comentarioRandom());
+        }
     }
 }

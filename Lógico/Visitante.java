@@ -2,7 +2,9 @@ package Lógico;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 public class Visitante {
     private Random rand = new Random();
     ArrayList<String> comentarios;

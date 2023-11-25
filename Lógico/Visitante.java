@@ -13,13 +13,18 @@ public class Visitante {
         this.nombre = "noname";
 
     }
-    public void observarHabitat(Habitat hab){
+    public String observarHabitat(Habitat hab){
         int satisfaccion = rand.nextInt(20);
+        String ret = "comentario hacerca del habitat";
         for(Animal a : hab.getAnimales()){
             satisfaccion += a.getAtractividad();
-            if(a == animalFavorito)satisfaccion+=(a.atractividad*2);
+            if(a == animalFavorito){
+                satisfaccion+=(a.atractividad*2);
+                ret = "Wow, ¡Es mi animal favorito!";
+            }
         }
-        //TODO aumentar la cantidad de dinero dependiendo de la satisfaccion
-
+        ZooManager.getInstance().addMoney(satisfaccion);
+        //TODO añadir mas comentarios de otros casos (habitat vacio, pocos animales...)
+        return ret;
     }
 }

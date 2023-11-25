@@ -6,6 +6,7 @@ public class ZooManager {
     public Habitat habitat2;
     public Habitat habitat3;
     public Habitat habitat4;
+    private static ZooManager instance;
     public ZooManager(int dineroInicial){
         this.money = dineroInicial;
         habitat1 = null;
@@ -14,6 +15,14 @@ public class ZooManager {
         habitat4 = null;
 
     }
+
+    public static ZooManager getInstance() {
+        if(instance == null){
+            instance = new ZooManager(10000);
+        }
+        return instance;
+    }
+
     public void comprarHabitat(Habitat compra, int costo){
 
     }

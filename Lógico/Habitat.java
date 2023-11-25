@@ -82,4 +82,7 @@ public class Habitat {
         if (comida == TipoAlimento.FOLLAJE)
             this.cantFollaje += cantComida;
     }
+    public ArrayList<Animal> getAnimales(){
+        return animales;
+    }
 }

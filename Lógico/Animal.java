@@ -8,6 +8,7 @@ public abstract class Animal {
     protected int metabolismo;
     protected int hambre = 0;
     protected int ferocidad;
+    protected int atractividad;
     private String nombre;
     protected TipoAlimento comidaPreferida;
     private Habitat habitat;
@@ -36,6 +37,7 @@ public abstract class Animal {
     public abstract String getSonido();
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     public int getMaxTemp(){return this.tempMax;}
+    public int getAtractividad(){return this.atractividad;}
 
     //TODO agregar el resto de getters.
 }

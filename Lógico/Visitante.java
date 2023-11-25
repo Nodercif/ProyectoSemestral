@@ -6,21 +6,21 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 public class Visitante {
-    private Random rand = new Random();
+    protected Random rand = new Random();
     private static final String[] comentarios = {"uwu","me gusta el zoologico","xd"};
     String nombre;
     Animal animalFavorito;
     public Visitante() {
         this.nombre = GeneradorDeNombres.getInstance().nombreRandom();
     }
-    public String observarHabitat(Habitat hab){
+    public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20);
         String ret = "comentario hacerca del habitat";
-        for(Animal a : hab.getAnimales()){
+        for(Animal a : hab.getAnimales()) {
             satisfaccion += a.getAtractividad();
             if(a == animalFavorito){
-                satisfaccion+=(a.atractividad*2);
-                ret = "Wow, ¡Es mi animal favorito!";
+                satisfaccion += (a.atractividad*2);
+                ret = "Wow, ¡Es mi animal favorito! Un " + animalFavorito.getEspecie() + ".";
             }
         }
         ZooManager.getInstance().addMoney(satisfaccion);

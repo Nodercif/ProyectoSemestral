@@ -18,4 +18,5 @@ public class OsoPolar extends Animal {
     public String getSonido() {
         return null;//TODO
     }
+    public String getEspecie(){ return "Oso Polar."; }
 }

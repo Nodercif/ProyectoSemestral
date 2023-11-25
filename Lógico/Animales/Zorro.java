@@ -18,4 +18,5 @@ public class Zorro extends Animal {
     public String getSonido() {
         return null;//TODO
     }
+    public String getEspecie(){ return "Zorro."; }
 }

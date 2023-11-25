@@ -38,6 +38,6 @@ public abstract class Animal {
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     public int getMaxTemp(){return this.tempMax;}
     public int getAtractividad(){return this.atractividad;}
-
+    public abstract String getEspecie();
     //TODO agregar el resto de getters.
 }

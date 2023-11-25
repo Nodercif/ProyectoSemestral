@@ -1,25 +1,22 @@
 package Lógico;
 
 public abstract class Animal {
-    protected int tempMax = -99999;
-    protected int tempMin = -99999;
-    private int humMax;
-    private int humMin;
-    private int metabolismo;
-    private int hambre;
-    private int ferocidad;
+    protected int tempMax;
+    protected int tempMin;
+    protected int humMax;
+    protected int humMin;
+    protected int metabolismo;
+    protected int hambre = 0;
+    protected int ferocidad;
     private String nombre;
-
+    protected TipoAlimento comidaPreferida;
     private Habitat habitat;
-    public Animal(int metabolismo, int ferocidad, String nombre, Habitat habitat){
-        this.metabolismo = metabolismo;
-        hambre = 0;
-        this.ferocidad = ferocidad;
+    public Animal(String nombre, Habitat habitat){
         this.nombre = nombre;
         this.habitat = habitat;
     }
     public void comerAlimento() {
-        //Reduce hambre.
+        hambre -= habitat.quitarComida(metabolismo, comidaPreferida);
     }
     public void pasoTiempo() {
         //Aumenta hambre.
@@ -27,7 +24,7 @@ public abstract class Animal {
     }
     public void morir() {
         //hambre >= 100 resta animal de habitat.
-        //Añade comida en clase ALimento, Carne.
+        habitat.addComida(metabolismo, TipoAlimento.CARNE);
     }
     public abstract String getSonido();
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}

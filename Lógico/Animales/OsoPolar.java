@@ -1,12 +1,18 @@
 package Lógico.Animales;
 import Lógico.Animal;
 import Lógico.Habitat;
+import Lógico.TipoAlimento;
 
 public class OsoPolar extends Animal {
-    public OsoPolar(int metabolismo, int ferocidad, String nombre, Habitat habitat) {
-        super(metabolismo,ferocidad,nombre,habitat);
+    public OsoPolar(String nombre, Habitat habitat) {
+        super(nombre,habitat);
         this.tempMax = 5;
         this.tempMin = -60;
+        this.metabolismo = 50;
+        this.comidaPreferida = TipoAlimento.PESCADO;
+        this.humMax = 999999;
+        this.humMin = 999999;
+        this.ferocidad = 99999;
     }
     @Override
     public String getSonido() {

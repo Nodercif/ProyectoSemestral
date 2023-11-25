@@ -7,13 +7,11 @@ import java.io.FileReader;
 import java.io.IOException;
 public class Visitante {
     private Random rand = new Random();
-    ArrayList<String> comentarios;
+    private static final String[] comentarios = {"uwu","me gusta el zoologico","xd"};
     String nombre;
     Animal animalFavorito;
     public Visitante() {
-        //TODO seleccionara nombre al azar de un archivo de texto de nombres random
-        this.nombre = "noname";
-
+        this.nombre = GeneradorDeNombres.getInstance().nombreRandom();
     }
     public String observarHabitat(Habitat hab){
         int satisfaccion = rand.nextInt(20);
@@ -29,4 +27,9 @@ public class Visitante {
         //TODO añadir mas comentarios de otros casos (habitat vacio, pocos animales...)
         return ret;
     }
+    public String comentarioRandom(){
+        return comentarios[rand.nextInt(comentarios.length)];
+    }
+
+    public String getNombre() {return nombre;}
 }

@@ -3,7 +3,6 @@ package Lógico;
 import java.util.ArrayList;
 
 public class VisitanteVIP extends Visitante {
-    private ArrayList<String> ;
     public VisitanteVIP() {
         super();
     }

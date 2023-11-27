@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 public class Visitante {
     protected Random rand = new Random();
-    private static final String[] comentarios = {"uwu","me gusta el zoologico","xd"};
+    private static final String[] comentarios = {"UwU","Me gusta el zoologico","Nadie sabe que soy furro", "QwQ", "Que increíbles animales"};
     String nombre;
     Animal animalFavorito;
     public Visitante() {
@@ -15,7 +15,7 @@ public class Visitante {
     }
     public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20);
-        String ret = "comentario hacerca del habitat";
+        String ret = "Comentario acerca del habitat";
         for(Animal a : hab.getAnimales()) {
             satisfaccion += a.getAtractividad();
             if(a == animalFavorito){

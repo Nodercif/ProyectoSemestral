@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Visitante {
     protected Random rand = new Random();
-    private static final String[] comentarios = {"uwu","me gusta el zoologico","xd"};
     protected String nombre;
     Animal animalFavorito;
     public Visitante() {
@@ -23,9 +22,6 @@ public class Visitante {
         ZooManager.getInstance().addMoney(satisfaccion);
         //TODO añadir mas comentarios de otros casos (habitat vacio, pocos animales...)
         return ret;
-    }
-    public String comentarioRandom(){
-        return comentarios[rand.nextInt(comentarios.length)];
     }
 
     public String getNombre() {return nombre;}

@@ -16,28 +16,41 @@ public class InformacionVisitantes {
     private static InformacionVisitantes instance;
     private Random rand;
     private ArrayList<String> nombres;
+    private ArrayList<String> comentariosRandom;
     private ArrayList<String> nombresVIP;
     private Map<String,ArrayList<String>> compentariosVIP;
     public InformacionVisitantes(){
         nombres = new ArrayList<String>();
+        comentariosRandom = new ArrayList<String>();
         nombresVIP = new ArrayList<String>();
         compentariosVIP = new HashMap<String,ArrayList<String>>();
         rand = new Random(123);
 
+        String archivoDeComentarios = "recursos/comentarios.txt";
         String archivoDeNombresRandom = "recursos/nombres.txt";
         String archivoDeInformacionVIP = "recursos/visitantesVIP.txt";
 
-        //leer nombres normales
+        //Leer nombres normales:
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoDeNombresRandom))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 nombres.add(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //leer informacion de visitantes vip
+
+        //Leer comentarios random:
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivoDeComentarios))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                comentariosRandom.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Leer informacion de visitantes vip:
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoDeInformacionVIP))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -50,7 +63,6 @@ public class InformacionVisitantes {
                 }
                 compentariosVIP.put(items[0],comentarios);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,6 +80,7 @@ public class InformacionVisitantes {
     public String nombreRandomVIP(){
         return nombresVIP.get(rand.nextInt(nombresVIP.size()));
     }
+    public String ComentarioRandom() { return comentariosRandom.get(rand.nextInt(comentariosRandom.size())); }
     public ArrayList<String> getComentariosVIP(String nombre){
         return compentariosVIP.get(nombre);
     }

@@ -23,6 +23,8 @@ public class Visitante {
         //TODO añadir mas comentarios de otros casos (habitat vacio, pocos animales...)
         return ret;
     }
-
+    public String comentarioRandom(){
+        return InformacionVisitantes.getInstance().ComentarioRandom();
+    }
     public String getNombre() {return nombre;}
 }

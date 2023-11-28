@@ -1,5 +1,6 @@
 import Lógico.*;
 import Lógico.Animales.*;
+import Visual.Ventana;
 
 import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
@@ -13,8 +14,11 @@ public class MainProyecto {
         }
         visitantes.add(new VisitanteVIP());
         System.out.println("veamos que dicen: \n");
-        for(Visitante v : visitantes){
+        /*for(Visitante v : visitantes){
             System.out.println(v.getNombre()+" dice: "+v.comentarioRandom());
-        }
+        }*/
+
+        Ventana ventana = new Ventana();
+        ventana.setVisible(true);
     }
 }

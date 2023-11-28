@@ -1,6 +1,8 @@
 package Visual;
 
-public class PanelPrincipal {
+import javax.swing.*;
+
+public class PanelPrincipal extends JPanel {
     public PanelPrincipal() {
 
     }

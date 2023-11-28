@@ -1,18 +1,16 @@
 package Lógico;
 
+import java.util.ArrayList;
+
 public class ZooManager {
     private int money;
-    public Habitat habitat1;
-    public Habitat habitat2;
-    public Habitat habitat3;
-    public Habitat habitat4;
+    public Habitat habitats[] = new Habitat[5];
     private static ZooManager instance;
     public ZooManager(int dineroInicial) {
         this.money = dineroInicial;
-        habitat1 = null;
-        habitat2 = null;
-        habitat3 = null;
-        habitat4 = null;
+        for(int i=0;i<5;i++){
+            habitats[i]=null;
+        }
     }
     public static ZooManager getInstance() {
         if(instance == null){
@@ -21,12 +19,7 @@ public class ZooManager {
         return instance;
     }
     public void comprarHabitat(Habitat compra, int costo, int habitatSeleccionada) {
-        switch (habitatSeleccionada) {
-            case 1 : habitat1 = compra; break;
-            case 2 : habitat2 = compra; break;
-            case 3 : habitat3 = compra; break;
-            case 4 : habitat4 = compra; break;
-        }
+        habitats[habitatSeleccionada] = compra;
         this.money -= costo;
     }
     public void addMoney(int cantidad){this.money += cantidad;}

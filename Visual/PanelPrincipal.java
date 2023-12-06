@@ -1,4 +1,6 @@
 package Visual;
+import Lógico.Animal;
+import Lógico.Animales.OsoPolar;
 import Lógico.ZooManager;
 
 import javax.imageio.ImageIO;
@@ -29,8 +31,16 @@ public class PanelPrincipal extends JPanel {
         panelesHabitat[3].setBounds(630,380,300,160);
         panelesHabitat[4].setBounds(1080,130,150,370);
         for(int i=0;i<5;i++){this.add(panelesHabitat[i]);panelesHabitat[i].setVisible(true);}
+
+        //testing
+        Animal ani = new OsoPolar("jeff",panelesHabitat[0].getHabitat());
+        AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
+        aniv.addDestino(100,60);
+        panelesHabitat[0].addAnimal(aniv);
+
     }
-    public void paint(Graphics g) {
+    @Override
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(fondo, 0, 0, this);
         paintChildren(g);

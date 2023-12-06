@@ -17,6 +17,11 @@ public class Ventana extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.add(panelPrincipal);
         this.setVisible(true);
+
+        Timer timer = new Timer(10, e -> {
+            repaint();
+        });
+        timer.start();
     }
 
     public static Ventana getInstance() {

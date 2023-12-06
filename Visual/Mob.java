@@ -11,21 +11,26 @@ class Punto{
     }
 }
 public abstract class Mob {
-    private float rapidez;
-    private Punto posicion;
-    private ArrayList<Punto> camino;
+    protected float rapidez;
+    protected Punto posicion;
+    protected ArrayList<Punto> camino;
     public Mob(){
         camino = new ArrayList<Punto>();
+        posicion = new Punto(0f,0f);
+        rapidez = 0.01f;
         String archivoDeCaminos = "recursos/caminos.txt";
     }
     public void tick() {
-        Punto siguiente = camino.get(0);
-        float dx = siguiente.x - posicion.x;
-        float dy = siguiente.y - posicion.x;
-        if( (dx*dx + dy*dy)<25 )camino.remove(0);
-        float norma = (float)Math.sqrt(dx*dx+dy*dy);
-        posicion.x += rapidez * dx/norma;
-        posicion.y += rapidez * dy/norma;
+        //moverse
+        if(!camino.isEmpty()){
+            Punto siguiente = camino.get(0);
+            float dx = siguiente.x - posicion.x;
+            float dy = siguiente.y - posicion.y;
+            if( (dx*dx + dy*dy)<25 )camino.remove(0);
+            float norma = (float)Math.sqrt(dx*dx+dy*dy);
+            posicion.x += rapidez * dx/norma;
+            posicion.y += rapidez * dy/norma;
+        }
     }
     public void addDestino(int x, int y){
         camino.add(new Punto(x,y));

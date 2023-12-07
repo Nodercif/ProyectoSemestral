@@ -22,23 +22,50 @@ public class MenuDeCompra extends JPanel{
         for(int i = 0; i < 5; i++) {
             botonesHabitat.add(new JButton());
         }
-        int i=0;
-        ActionListener accionComprar = new ActionListener() {
+        // Asignar acciones a los botones para comprar habitats ////////////////////////////////////////////
+        ActionListener comprarHabitatBosque = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 comprarHabitat(1);
-                //TODO
             }
         };
+        botonesHabitat.get(0).addActionListener(comprarHabitatBosque);
+        ActionListener comprarHabitatSabana = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                comprarHabitat(2);
+            }
+        };
+        botonesHabitat.get(1).addActionListener(comprarHabitatSabana);
+        ActionListener comprarHabitatDesierto = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                comprarHabitat(3);
+            }
+        };
+        botonesHabitat.get(2).addActionListener(comprarHabitatDesierto);
+        ActionListener comprarHabitatAcuatica = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                comprarHabitat(4);
+            }
+        };
+        botonesHabitat.get(3).addActionListener(comprarHabitatAcuatica);
+        ActionListener comprarHabitatPolar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                comprarHabitat(5);
+            }
+        };
+        botonesHabitat.get(4).addActionListener(comprarHabitatBosque);
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        int i=0;
         for(JButton b : botonesHabitat){
             ImageIcon icono = new ImageIcon("recursos/botones/boton" + i + ".png");
             icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
             b.setIcon(icono);
-            b.addActionListener(accionComprar);
             i++;
         }
-
-
     }
     public void abrirMenu(int habitatSeleccionado, int tipoCompra) {
         cerrarMenu();
@@ -55,7 +82,6 @@ public class MenuDeCompra extends JPanel{
             //TODO
         }
     }
-
     public void comprarHabitat(int tipoHabitat) {
         Habitat habitat;
         Image imagen;

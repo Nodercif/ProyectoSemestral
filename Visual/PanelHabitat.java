@@ -41,8 +41,6 @@ public class PanelHabitat extends JPanel {
         //super.paintComponent(g);
         g.drawImage(imagenHabitat, 0, 0, this);
         Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(Color.BLUE);
-        g2d.drawRect(0,0,this.getWidth()-1,this.getHeight()-1);
 
         for(AnimalVisual a : animalesVis){
             int x = a.getPosX();

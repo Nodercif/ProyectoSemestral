@@ -29,7 +29,7 @@ public class AnimalVisual extends Mob {
     public void tick(){
         super.tick();
         if(rand.nextInt(1000)<5)
-            addDestino(rand.nextInt(habitat.getWidth()), rand.nextInt(habitat.getHeight()));
+            addDestino(rand.nextInt(habitat.getWidth()-50), rand.nextInt(habitat.getHeight()-40));
 
     }
 }

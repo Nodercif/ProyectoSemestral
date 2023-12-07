@@ -30,6 +30,7 @@ public class PanelHabitat extends JPanel {
     }
 
     public Habitat getHabitat() {return habitat;}
+    public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     @Override
     public void paintComponent(Graphics g) {
         //super.paintComponent(g);
@@ -37,15 +38,18 @@ public class PanelHabitat extends JPanel {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.BLUE);
         g2d.drawRect(0,0,this.getWidth()-1,this.getHeight()-1);
-        System.out.println("painting habitat, animalcount:"+animalesVis.size());
 
         for(AnimalVisual a : animalesVis){
             int x = a.getPosX();
             int y = a.getPosY();
-            System.out.println("painting aniaml, pos:"+x+" "+y);
             g2d.drawImage(a.getImagen(),a.getPosX(),a.getPosY(),this);
         }
 
-
+        if(habitat == null) {
+            g2d.drawOval(10 ,10, 10, 10);
+        }
+        else {
+            g2d.drawOval(10 ,10, 20, 20);
+        }
     }
 }

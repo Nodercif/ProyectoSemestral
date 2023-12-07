@@ -6,17 +6,25 @@ import Lógico.ZooManager;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class PanelPrincipal extends JPanel {
-    private PanelHabitat panelesHabitat[] = new PanelHabitat[5];
+    static PanelPrincipal instance;
+    public PanelHabitat panelesHabitat[] = new PanelHabitat[5];
     private PanelInformacion panelInformacion;
     private ArrayList<VisitanteVisual> visitanteVisual;
     private Image fondo;
+    private MenuDeCompra menuDeCompra;
     public PanelPrincipal() {
         super();
+        instance = this;
+        menuDeCompra = new MenuDeCompra();
+        add(menuDeCompra);
+        menuDeCompra.setVisible(false);
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){
@@ -32,12 +40,28 @@ public class PanelPrincipal extends JPanel {
         panelesHabitat[4].setBounds(1080,130,150,370);
         for(int i=0;i<5;i++){this.add(panelesHabitat[i]);panelesHabitat[i].setVisible(true);}
 
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int contador = 0;
+                for(PanelHabitat h : panelesHabitat) {
+                    if(h.getBounds().contains(e.getPoint()) && (h.getHabitat() == null)) {
+                        menuDeCompra.mostrarPanel(contador);
+                    }
+                    contador += 1;
+                }
+            }
+        });
         //testing
         Animal ani = new OsoPolar("jeff",panelesHabitat[0].getHabitat());
         AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
         aniv.addDestino(100,60);
         panelesHabitat[0].addAnimal(aniv);
 
+    }
+    public static PanelPrincipal getInstance() {
+        return instance;
     }
     @Override
     public void paintComponent(Graphics g) {

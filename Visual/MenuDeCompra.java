@@ -27,6 +27,7 @@ public class MenuDeCompra extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 comprarHabitat(1);
+                //TODO
             }
         };
         for(JButton b : botonesHabitat){
@@ -59,14 +60,51 @@ public class MenuDeCompra extends JPanel{
         Habitat habitat;
         Image imagen;
         switch (tipoHabitat) {
-            //TODO;
-        }
-        habitat = new Habitat(20, 20);
-        imagen = (new ImageIcon("recursos/habitats/habitat.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+            // Habitat bosque:
+            case 1:
+                habitat = new Habitat(15, 30);
+                imagen = (new ImageIcon("recursos/habitats/habitatBosque.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                ZooManager.getInstance().comprarHabitat(habitat, 3000, 1);
+                panelHabitatSeleccionado.setHabitat(habitat);
+                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                break;
 
-        ZooManager.getInstance().comprarHabitat(habitat, 100, 1);
-        panelHabitatSeleccionado.setHabitat(habitat);
-        panelHabitatSeleccionado.setImagenHabitat(imagen);
+            // Habitat sabana:
+            case 2:
+                habitat = new Habitat(30, -30);
+                imagen = (new ImageIcon("recursos/habitats/habitatSabana.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                ZooManager.getInstance().comprarHabitat(habitat, 5000, 2);
+                panelHabitatSeleccionado.setHabitat(habitat);
+                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                break;
+
+            // Habitat desierto:
+            case 3:
+                habitat = new Habitat(40, -40);
+                imagen = (new ImageIcon("recursos/habitats/habitatDesierto.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                ZooManager.getInstance().comprarHabitat(habitat, 7000, 3);
+                panelHabitatSeleccionado.setHabitat(habitat);
+                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                break;
+
+            // Habitat acuatica:
+            case 4:
+                habitat = new Habitat(25, 100);
+                imagen = (new ImageIcon("recursos/habitats/habitatAcuatica.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                ZooManager.getInstance().comprarHabitat(habitat, 9000, 4);
+                panelHabitatSeleccionado.setHabitat(habitat);
+                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                break;
+
+            // Habitat polar:
+            case 5:
+                habitat = new Habitat(-40, 100);
+                imagen = (new ImageIcon("recursos/habitats/habitatPolar.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                ZooManager.getInstance().comprarHabitat(habitat, 11000, 5);
+                panelHabitatSeleccionado.setHabitat(habitat);
+                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                break;
+        }
         cerrarMenu();
     }
     public void cerrarMenu(){

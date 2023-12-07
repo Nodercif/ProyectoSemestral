@@ -139,5 +139,4 @@ public class MenuDeCompra extends JPanel{
             panelHabitatSeleccionado.esteHabitatEstaSeleccionado = false;
     }
     public PanelHabitat getPanelHabitatSeleccionado(){return panelHabitatSeleccionado;}
-
 }

@@ -3,6 +3,7 @@ package Visual;
 import Lógico.Habitat;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class PanelInformacion extends JPanel {
@@ -13,6 +14,7 @@ public class PanelInformacion extends JPanel {
     public PanelInformacion() {
         this.setLayout(null);
         this.setVisible(false);
+        setBorder(new LineBorder(Color.gray,5));
         this.setBackground(Color.white);
         this.setBounds(20, 550, 300, 600);
 

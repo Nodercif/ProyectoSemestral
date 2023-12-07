@@ -24,7 +24,8 @@ public class PanelPrincipal extends JPanel {
         instance = this;
         menuDeCompra = new MenuDeCompra();
         add(menuDeCompra);
-        menuDeCompra.setVisible(false);
+        panelInformacion = new PanelInformacion();
+        add(panelInformacion);
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){
@@ -34,8 +35,8 @@ public class PanelPrincipal extends JPanel {
         this.setLayout(null);
         for(int i=0;i<5;i++)panelesHabitat[i] = new PanelHabitat( ZooManager.getInstance().habitats[i]);
         panelesHabitat[0].setBounds(130,150,300,160);
-        panelesHabitat[1].setBounds(550,150,300,160);
-        panelesHabitat[2].setBounds(130,380,300,160);
+        panelesHabitat[1].setBounds(130,380,300,160);
+        panelesHabitat[2].setBounds(550,150,300,160);
         panelesHabitat[3].setBounds(550,380,300,160);
         panelesHabitat[4].setBounds(930,250,300,160);
         for(int i=0;i<5;i++){this.add(panelesHabitat[i]);panelesHabitat[i].setVisible(true);}
@@ -45,14 +46,29 @@ public class PanelPrincipal extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 int contador = 0;
+                boolean sinSeleccion = true;
+                if(panelInformacion.isVisible() && panelInformacion.getBounds().contains(e.getPoint()))
+                    return;
                 for(PanelHabitat h : panelesHabitat) {
                     if(h.getBounds().contains(e.getPoint())) {
+                        sinSeleccion = false;
+                        if(h!=menuDeCompra.getPanelHabitatSeleccionado())
+                            menuDeCompra.cerrarMenu();
+                        if(h!=panelInformacion.getPanelHabitatSeleccionado())
+                            panelInformacion.cerrarMenu();
                         if(h.getHabitat() == null){
                             menuDeCompra.abrirMenu(contador);
+                        }else{
+                            //abrir panel informacion
+                            panelInformacion.abrirMenu(contador);
                         }
-                        //abrir panel informacion
+
                     }
                     contador += 1;
+                }
+                if(sinSeleccion){
+                    menuDeCompra.cerrarMenu();
+                    panelInformacion.cerrarMenu();
                 }
             }
         });

@@ -10,6 +10,8 @@ public class MenuDeCompra extends JPanel{
     private ArrayList<JButton> botonesHabitat;
     private int numeroHabitatSeleccionado;
     private PanelHabitat panelHabitatSeleccionado;
+    public static final int COMPRAHABITAT = 1;
+    public static final int COMPRAANIMAL = 2;
     public MenuDeCompra() {
         this.setLayout(new GridLayout(1,5));
         this.setVisible(false);
@@ -18,19 +20,9 @@ public class MenuDeCompra extends JPanel{
         this.setBounds(20, 550, 1220, 120);
 
         for(int i = 0; i < 5; i++) {
-            ImageIcon icono = new ImageIcon("recursos/botones/boton" + i + ".png");
-            icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
-            botonesHabitat.add(new JButton(icono));
+            botonesHabitat.add(new JButton());
         }
-
-
-    }
-    public void abrirMenu(int habitatSeleccionada) {
-        cerrarMenu();
-        this.numeroHabitatSeleccionado = habitatSeleccionada;
-        this.panelHabitatSeleccionado =PanelPrincipal.getInstance().panelesHabitat[habitatSeleccionada];
-         panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
-        this.setVisible(true);
+        int i=0;
         ActionListener accionComprar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,9 +30,28 @@ public class MenuDeCompra extends JPanel{
             }
         };
         for(JButton b : botonesHabitat){
-            b.setVisible(true);
-            this.add(b);
+            ImageIcon icono = new ImageIcon("recursos/botones/boton" + i + ".png");
+            icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
+            b.setIcon(icono);
             b.addActionListener(accionComprar);
+            i++;
+        }
+
+
+    }
+    public void abrirMenu(int habitatSeleccionado, int tipoCompra) {
+        cerrarMenu();
+        this.numeroHabitatSeleccionado = habitatSeleccionado;
+        this.panelHabitatSeleccionado =PanelPrincipal.getInstance().panelesHabitat[numeroHabitatSeleccionado];
+        panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
+        this.setVisible(true);
+        if(tipoCompra == COMPRAHABITAT){
+            for(JButton b : botonesHabitat){
+                b.setVisible(true);
+                this.add(b);
+            }
+        }else if(tipoCompra == COMPRAANIMAL){
+            //TODO
         }
     }
 

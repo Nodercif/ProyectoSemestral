@@ -57,7 +57,7 @@ public class MenuDeCompra extends JPanel{
                 comprarHabitat(5);
             }
         };
-        botonesHabitat.get(4).addActionListener(comprarHabitatBosque);
+        botonesHabitat.get(4).addActionListener(comprarHabitatPolar);
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         int i=0;
         for(JButton b : botonesHabitat){
@@ -90,7 +90,7 @@ public class MenuDeCompra extends JPanel{
             case 1:
                 habitat = new Habitat(15, 30);
                 imagen = (new ImageIcon("recursos/habitats/habitatBosque.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 3000, 1);
+                ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado);
                 panelHabitatSeleccionado.setHabitat(habitat);
                 panelHabitatSeleccionado.setImagenHabitat(imagen);
                 break;
@@ -99,7 +99,7 @@ public class MenuDeCompra extends JPanel{
             case 2:
                 habitat = new Habitat(30, -30);
                 imagen = (new ImageIcon("recursos/habitats/habitatSabana.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 5000, 2);
+                ZooManager.getInstance().comprarHabitat(habitat, 5000, numeroHabitatSeleccionado);
                 panelHabitatSeleccionado.setHabitat(habitat);
                 panelHabitatSeleccionado.setImagenHabitat(imagen);
                 break;
@@ -108,7 +108,7 @@ public class MenuDeCompra extends JPanel{
             case 3:
                 habitat = new Habitat(40, -40);
                 imagen = (new ImageIcon("recursos/habitats/habitatDesierto.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 7000, 3);
+                ZooManager.getInstance().comprarHabitat(habitat, 7000, numeroHabitatSeleccionado);
                 panelHabitatSeleccionado.setHabitat(habitat);
                 panelHabitatSeleccionado.setImagenHabitat(imagen);
                 break;
@@ -117,7 +117,7 @@ public class MenuDeCompra extends JPanel{
             case 4:
                 habitat = new Habitat(25, 100);
                 imagen = (new ImageIcon("recursos/habitats/habitatAcuatica.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 9000, 4);
+                ZooManager.getInstance().comprarHabitat(habitat, 9000, numeroHabitatSeleccionado);
                 panelHabitatSeleccionado.setHabitat(habitat);
                 panelHabitatSeleccionado.setImagenHabitat(imagen);
                 break;
@@ -126,7 +126,7 @@ public class MenuDeCompra extends JPanel{
             case 5:
                 habitat = new Habitat(-40, 100);
                 imagen = (new ImageIcon("recursos/habitats/habitatPolar.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 11000, 5);
+                ZooManager.getInstance().comprarHabitat(habitat, 11000, numeroHabitatSeleccionado);
                 panelHabitatSeleccionado.setHabitat(habitat);
                 panelHabitatSeleccionado.setImagenHabitat(imagen);
                 break;

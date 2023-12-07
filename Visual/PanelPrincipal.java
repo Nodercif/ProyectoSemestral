@@ -32,12 +32,12 @@ public class PanelPrincipal extends JPanel {
             System.exit(69);
         }
         this.setLayout(null);
-        for(int i=0;i<5;i++)panelesHabitat[i] = new PanelHabitat(null, ZooManager.getInstance().habitats[i]);
+        for(int i=0;i<5;i++)panelesHabitat[i] = new PanelHabitat( ZooManager.getInstance().habitats[i]);
         panelesHabitat[0].setBounds(130,150,300,160);
-        panelesHabitat[1].setBounds(630,150,300,160);
+        panelesHabitat[1].setBounds(550,150,300,160);
         panelesHabitat[2].setBounds(130,380,300,160);
-        panelesHabitat[3].setBounds(630,380,300,160);
-        panelesHabitat[4].setBounds(1080,130,150,370);
+        panelesHabitat[3].setBounds(550,380,300,160);
+        panelesHabitat[4].setBounds(930,250,300,160);
         for(int i=0;i<5;i++){this.add(panelesHabitat[i]);panelesHabitat[i].setVisible(true);}
 
         this.addMouseListener(new MouseAdapter() {
@@ -46,8 +46,11 @@ public class PanelPrincipal extends JPanel {
                 super.mouseClicked(e);
                 int contador = 0;
                 for(PanelHabitat h : panelesHabitat) {
-                    if(h.getBounds().contains(e.getPoint()) && (h.getHabitat() == null)) {
-                        menuDeCompra.mostrarPanel(contador);
+                    if(h.getBounds().contains(e.getPoint())) {
+                        if(h.getHabitat() == null){
+                            menuDeCompra.abrirMenu(contador);
+                        }
+                        //abrir panel informacion
                     }
                     contador += 1;
                 }

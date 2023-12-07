@@ -11,8 +11,12 @@ public class PanelHabitat extends JPanel {
     public Image imagenHabitat;
     private Habitat habitat;
     private ArrayList<AnimalVisual> animalesVis;
-    public PanelHabitat(Image imagenHabitat, Habitat habitat) {
-        this.imagenHabitat = imagenHabitat;
+    public boolean esteHabitatEstaSeleccionado;
+    public PanelHabitat(Habitat habitat) {
+        if(habitat == null){
+            imagenHabitat = (new ImageIcon("recursos/habitats/noHabitat.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+        }
+        esteHabitatEstaSeleccionado = false;
         this.habitat = habitat;
         setBackground(new Color(0,0,0,0));
         animalesVis = new ArrayList<AnimalVisual>();
@@ -31,6 +35,7 @@ public class PanelHabitat extends JPanel {
 
     public Habitat getHabitat() {return habitat;}
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
+    public void setImagenHabitat(Image imagen){this.imagenHabitat = imagen;}
     @Override
     public void paintComponent(Graphics g) {
         //super.paintComponent(g);
@@ -44,12 +49,9 @@ public class PanelHabitat extends JPanel {
             int y = a.getPosY();
             g2d.drawImage(a.getImagen(),a.getPosX(),a.getPosY(),this);
         }
-
-        if(habitat == null) {
+        if(esteHabitatEstaSeleccionado){
+            g2d.setColor(Color.green);
             g2d.drawOval(10 ,10, 10, 10);
-        }
-        else {
-            g2d.drawOval(10 ,10, 20, 20);
         }
     }
 }

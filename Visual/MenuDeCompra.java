@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class MenuDeCompra extends JPanel{
@@ -25,8 +23,10 @@ public class MenuDeCompra extends JPanel{
 
 
     }
-    public void mostrarPanel(int habitatSeleccionada) {
+    public void abrirMenu(int habitatSeleccionada) {
+        cerrarMenu();
         this.habitatSeleccionada = habitatSeleccionada;
+        PanelPrincipal.getInstance().panelesHabitat[habitatSeleccionada].esteHabitatEstaSeleccionado = true;
         this.setVisible(true);
         ActionListener accionComprar = new ActionListener() {
             @Override
@@ -42,12 +42,24 @@ public class MenuDeCompra extends JPanel{
     }
 
     public void comprarHabitat(int tipoHabitat) {
+        Habitat habitat;
+        Image imagen;
         switch (tipoHabitat) {
             //TODO;
         }
-        Habitat habitat = new Habitat(20, 20);
+        habitat = new Habitat(20, 20);
+        imagen = (new ImageIcon("recursos/habitats/habitat.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+
         ZooManager.getInstance().comprarHabitat(habitat, 100, 1);
-        PanelPrincipal.getInstance().panelesHabitat[habitatSeleccionada].setHabitat(habitat);
+        PanelHabitat panHab =PanelPrincipal.getInstance().panelesHabitat[habitatSeleccionada];
+        panHab.setHabitat(habitat);
+        panHab.setImagenHabitat(imagen);
+        cerrarMenu();
+    }
+    public void cerrarMenu(){
+        this.setVisible(false);
+        PanelPrincipal.getInstance().panelesHabitat[habitatSeleccionada].esteHabitatEstaSeleccionado = false;
+
     }
 
 }

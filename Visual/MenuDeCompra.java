@@ -165,10 +165,6 @@ public class MenuDeCompra extends JPanel{
         }
     }
     public void comprarAnimal(int tipoAnimal) {
-       Habitat habitat = panelHabitatSeleccionado.getHabitat();
-        Animal animal;
-        AnimalVisual animalVisual;
-        Image imagen;
         switch (tipoAnimal) {
             // Animal Oso polar:
             case 1:

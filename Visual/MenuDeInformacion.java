@@ -19,7 +19,8 @@ public class MenuDeInformacion extends JPanel{
     private JButton cambiarAnimalDerecha;
     private JLabel tituloPanel;
     private JTextArea informacionHabitat;
-    private int indiceAnimalSeleccionado;
+    private PanelInformacionAnimal panelInformacionAnimal;
+    private int poscicionListaAnimales;
 
     public MenuDeInformacion() {
         this.setLayout(null);
@@ -29,6 +30,7 @@ public class MenuDeInformacion extends JPanel{
         tituloPanel = new JLabel("Informacion Habitat");
         tituloPanel.setBounds(90, 10, 300, 10);
         menuDeCompra = new MenuDeCompra();
+        panelInformacionAnimal = new PanelInformacionAnimal();
         //Botones:
         botonComprarAnimal = new JButton("<html>Comprar<br> Animal</html>");
         botonComprarComida = new JButton("<html>Comprar<br> Comida</html>");
@@ -42,12 +44,15 @@ public class MenuDeInformacion extends JPanel{
         //Asignar accion:
         botonComprarAnimal.addActionListener(e -> abrirMenuCompraAnimal());
         botonComprarComida.addActionListener(e -> abrirMenuCompraComida());
+        cambiarAnimalIzquierda.addActionListener(e -> disminuirPoscicion());
+        cambiarAnimalDerecha.addActionListener(e -> incrementarPoscicion());
         //Agregar al panel:
         this.add(tituloPanel);
         this.add(botonComprarAnimal);
         this.add(botonComprarComida);
         this.add(cambiarAnimalIzquierda);
         this.add(cambiarAnimalDerecha);
+        this.add(panelInformacionAnimal);
     }
     public void abrirMenu(int habitatSeleccionado){
         cerrarMenu();
@@ -69,7 +74,7 @@ public class MenuDeInformacion extends JPanel{
                 ".\nHumedad del habitat: " + habitat.getHumedad() + ".\nCantidad de animales en el habitat: " +
                 cantidadAnimales + ".");
         informacionHabitat.setBounds(20, 130, 260, 45);
-        informacionHabitat.setBackground(new Color(200, 250, 190));
+        informacionHabitat.setBackground(new Color(160, 230, 140));
         informacionHabitat.setFont(new Font("Arial", Font.BOLD, 12));
         informacionHabitat.setEditable(false);
         this.add(informacionHabitat);
@@ -88,6 +93,28 @@ public class MenuDeInformacion extends JPanel{
     }
     public void abrirMenuCompraComida() {
         menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRACOMIDA);
+    }
+    public void incrementarPoscicion() {
+        if(habitat.getAnimales().size() > 0) {
+            if(poscicionListaAnimales < habitat.getAnimales().size()) {
+                poscicionListaAnimales ++;
+            }
+            else {
+                poscicionListaAnimales = 0;
+            }
+        }
+        panelInformacionAnimal.setAnimal(habitat.getAnimales().get(poscicionListaAnimales));
+    }
+    public void disminuirPoscicion() {
+        if(habitat.getAnimales().size() > 0) {
+            if(poscicionListaAnimales > 0) {
+                poscicionListaAnimales --;
+            }
+            else {
+                poscicionListaAnimales = habitat.getAnimales().size();
+            }
+        }
+        panelInformacionAnimal.setAnimal(habitat.getAnimales().get(poscicionListaAnimales));
     }
     public void cerrarMenu(){
         this.setVisible(false);

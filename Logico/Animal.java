@@ -1,4 +1,4 @@
-package Lógico;
+package Logico;
 import java.util.Random;
 public abstract class Animal {
     protected int tempMax;
@@ -9,12 +9,10 @@ public abstract class Animal {
     protected int hambre = 0;
     protected int ferocidad;
     protected int atractividad;
-    private String nombre;
     protected TipoAlimento comidaPreferida;
     private Habitat habitat;
     private Random numeroAlAzar = new Random();
-    public Animal(String nombre, Habitat habitat){
-        this.nombre = nombre;
+    public Animal(Habitat habitat){
         this.habitat = habitat;
     }
     public void comerAlimento() {
@@ -37,7 +35,11 @@ public abstract class Animal {
     public abstract String getSonido();
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     public int getMaxTemp(){return this.tempMax;}
+    public int getMinTemp(){return this.tempMin;}
+    public int getMaxHum(){return this.humMax;}
+    public int getMinHum(){return this.humMin;}
     public int getAtractividad(){return this.atractividad;}
     public abstract String getEspecie();
+    public abstract int getPrecio();
     //TODO agregar el resto de getters.
 }

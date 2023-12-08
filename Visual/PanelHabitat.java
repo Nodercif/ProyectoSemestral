@@ -1,7 +1,6 @@
 package Visual;
 
-import Lógico.Animal;
-import Lógico.Habitat;
+import Logico.Habitat;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +33,7 @@ public class PanelHabitat extends JPanel {
     }
 
     public Habitat getHabitat() {return habitat;}
+    public ArrayList<AnimalVisual> getAnimalesVisual() {return animalesVis;}
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     public void setImagenHabitat(Image imagen){this.imagenHabitat = imagen;}
     @Override

@@ -1,6 +1,4 @@
-package Lógico;
-
-import java.util.ArrayList;
+package Logico;
 
 public class ZooManager {
     private int money;

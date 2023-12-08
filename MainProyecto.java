@@ -1,9 +1,4 @@
-import Lógico.*;
-import Lógico.Animales.*;
 import Visual.Ventana;
-
-import javax.swing.plaf.PanelUI;
-import java.util.ArrayList;
 
 public class MainProyecto {
     public static void main(String[] args){

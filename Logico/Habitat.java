@@ -1,4 +1,4 @@
-package Lógico;
+package Logico;
 import java.util.ArrayList;
 
 public class Habitat {
@@ -85,4 +85,6 @@ public class Habitat {
     public ArrayList<Animal> getAnimales(){
         return animales;
     }
+    public int getTemperatura() { return temperatura;}
+    public int getHumedad() { return humedad; }
 }

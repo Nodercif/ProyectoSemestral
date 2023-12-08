@@ -1,7 +1,5 @@
 package Visual;
-import Lógico.Animal;
-import Lógico.Animales.OsoPolar;
-import Lógico.ZooManager;
+import Logico.ZooManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,17 +13,18 @@ import java.util.ArrayList;
 public class PanelPrincipal extends JPanel {
     static PanelPrincipal instance;
     public PanelHabitat panelesHabitat[] = new PanelHabitat[5];
-    private PanelInformacion panelInformacion;
+    private MenuDeInformacion menuDeInformacion;
+    private MenuDeCompra menuDeCompra;
+
     private ArrayList<VisitanteVisual> visitanteVisual;
     private Image fondo;
-    private MenuDeCompra menuDeCompra;
     public PanelPrincipal() {
         super();
         instance = this;
         menuDeCompra = new MenuDeCompra();
         add(menuDeCompra);
-        panelInformacion = new PanelInformacion();
-        add(panelInformacion);
+        menuDeInformacion = new MenuDeInformacion();
+        add(menuDeInformacion);
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){
@@ -47,36 +46,35 @@ public class PanelPrincipal extends JPanel {
                 super.mouseClicked(e);
                 int contador = 0;
                 boolean sinSeleccion = true;
-                if(panelInformacion.isVisible() && panelInformacion.getBounds().contains(e.getPoint()))
+                if(menuDeInformacion.isVisible() && menuDeInformacion.getBounds().contains(e.getPoint()))
                     return;
                 for(PanelHabitat h : panelesHabitat) {
                     if(h.getBounds().contains(e.getPoint())) {
                         sinSeleccion = false;
-                        if(h!=menuDeCompra.getPanelHabitatSeleccionado())
+                        if(h!= menuDeCompra.getPanelHabitatSeleccionado())
                             menuDeCompra.cerrarMenu();
-                        if(h!=panelInformacion.getPanelHabitatSeleccionado())
-                            panelInformacion.cerrarMenu();
+                        if(h!= menuDeInformacion.getPanelHabitatSeleccionado())
+                            menuDeInformacion.cerrarMenu();
                         if(h.getHabitat() == null){
-                            menuDeCompra.abrirMenu(contador,MenuDeCompra.COMPRAHABITAT);
+                            menuDeCompra.abrirMenu(contador, MenuDeCompra.COMPRAHABITAT);
                         }else{
                             //abrir panel informacion
-                            panelInformacion.abrirMenu(contador);
+                            menuDeInformacion.abrirMenu(contador);
                         }
-
                     }
                     contador += 1;
                 }
                 if(sinSeleccion){
                     menuDeCompra.cerrarMenu();
-                    panelInformacion.cerrarMenu();
+                    menuDeInformacion.cerrarMenu();
                 }
             }
         });
         //testing
-        Animal ani = new OsoPolar("jeff",panelesHabitat[0].getHabitat());
+        /*Animal ani = new OsoPolar(panelesHabitat[0].getHabitat());
         AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
         aniv.addDestino(100,60);
-        panelesHabitat[0].addAnimal(aniv);
+        panelesHabitat[0].addAnimal(aniv);*/
 
     }
     public static PanelPrincipal getInstance() {

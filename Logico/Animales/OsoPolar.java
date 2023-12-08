@@ -1,11 +1,11 @@
-package Lógico.Animales;
-import Lógico.Animal;
-import Lógico.Habitat;
-import Lógico.TipoAlimento;
+package Logico.Animales;
+import Logico.Animal;
+import Logico.Habitat;
+import Logico.TipoAlimento;
 
 public class OsoPolar extends Animal {
-    public OsoPolar(String nombre, Habitat habitat) {
-        super(nombre,habitat);
+    public OsoPolar(Habitat habitat) {
+        super(habitat);
         this.tempMax = 5;
         this.tempMin = -60;
         this.metabolismo = 50;
@@ -19,4 +19,5 @@ public class OsoPolar extends Animal {
         return null;//TODO
     }
     public String getEspecie(){ return "oso polar"; }
+    public int getPrecio(){ return 1000;}
 }

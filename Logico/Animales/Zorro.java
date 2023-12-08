@@ -1,11 +1,11 @@
-package Lógico.Animales;
-import Lógico.Animal;
-import Lógico.Habitat;
-import Lógico.TipoAlimento;
+package Logico.Animales;
+import Logico.Animal;
+import Logico.Habitat;
+import Logico.TipoAlimento;
 
-public class Panda extends Animal {
-    public Panda(String nombre, Habitat habitat) {
-        super(nombre,habitat);
+public class Zorro extends Animal {
+    public Zorro(Habitat habitat) {
+        super(habitat);
         this.tempMax = 5;
         this.tempMin = -60;
         this.metabolismo = 50;
@@ -18,5 +18,6 @@ public class Panda extends Animal {
     public String getSonido() {
         return null;//TODO
     }
-    public String getEspecie(){ return "oso panda"; }
+    public String getEspecie(){ return "zorro"; }
+    public int getPrecio(){ return 800;}
 }

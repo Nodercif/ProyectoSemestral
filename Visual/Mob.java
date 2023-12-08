@@ -38,6 +38,10 @@ public abstract class Mob {
 
     public int getPosX(){return (int)posicion.x;}
     public int getPosY(){return (int)posicion.y;}
+    public void setPosicion(int x, int y){
+        posicion.x = x;
+        posicion.y = y;
+    }
     public void setRapidez(float rapidez){
         this.rapidez = rapidez;
         if(this.rapidez >= 5)this.rapidez = 4.99f;

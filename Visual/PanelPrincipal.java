@@ -41,7 +41,7 @@ public class PanelPrincipal extends JPanel {
         panelesHabitat[1].setBounds(130,380,300,160);
         panelesHabitat[2].setBounds(550,150,300,160);
         panelesHabitat[3].setBounds(550,380,300,160);
-        panelesHabitat[4].setBounds(930,250,300,160);
+        panelesHabitat[4].setBounds(900,250,300,160);
         for(int i=0;i<5;i++){this.add(panelesHabitat[i]);panelesHabitat[i].setVisible(true);}
 
         this.addMouseListener(new MouseAdapter() {
@@ -87,16 +87,10 @@ public class PanelPrincipal extends JPanel {
         AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
         aniv.addDestino(100,60);
         panelesHabitat[0].addAnimal(aniv);
-        Visitante vis = new Visitante();
-        visitantes.add(new VisitanteVisual(vis));
-        (visitantes.get(0)).addDestino(600,80);
-        (visitantes.get(0)).addDestino(450,80);
-        (visitantes.get(0)).addDestino(450,300);
-        vis = new VisitanteVIP();
-        visitantes.add(new VisitanteVisual(vis));
-        (visitantes.get(1)).addDestino(600,80);
-        (visitantes.get(1)).addDestino(800,80);
-        InformacionCaminos.getInstance();
+        for(int i=0;i<9;i++){
+            Visitante vis = new Visitante();
+            visitantes.add(new VisitanteVisual(vis));
+        }
 
     }
     public static PanelPrincipal getInstance() {
@@ -106,9 +100,9 @@ public class PanelPrincipal extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(fondo, 0, 0, this);
+        paintChildren(g);
         for(VisitanteVisual v : visitantes){
             g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
         }
-        paintChildren(g);
     }
 }

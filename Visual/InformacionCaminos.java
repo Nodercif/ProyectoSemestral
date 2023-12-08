@@ -6,10 +6,7 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * informacion caminos es un singleton que leera la informacin de los caminos por donde pueden caminar
@@ -33,6 +30,8 @@ public class InformacionCaminos {
      * un mapa que guarda una lista de cruzes a los que se puede llegar desde cada cruze
      */
     Map<Point,ArrayList<Point>> listaDeAdyacencia = new HashMap<>();
+
+    Random rand = new Random();
 
     /**
      * el constructor va a cargar la informacion de un archivo de texto
@@ -78,6 +77,19 @@ public class InformacionCaminos {
     /** retorna el punto del indice-esimo cruze*/
     public Point getCruze(int indice){
         return cruzes.get(indice);
+    }
+    public int getCantCruzes(){return cruzes.size();}
+
+    /**
+     * toma un visitante y le añade como destino un cruze que tenga conexion con el cruze en el que esta
+     * @param vis el visitante a mover
+     */
+    public void moverVisitante(VisitanteVisual vis){
+        Point cruze = cruzes.get(vis.indiceCruze);
+        ArrayList<Point> posiblesDestinos = listaDeAdyacencia.get(cruze);
+        Point siguienteCruze = posiblesDestinos.get(rand.nextInt(posiblesDestinos.size()));
+        vis.addDestino(siguienteCruze);
+        vis.indiceCruze = cruzes.indexOf(siguienteCruze);
     }
 
     public static InformacionCaminos getInstance() {

@@ -40,6 +40,7 @@ public abstract class Mob {
     public void addDestino(int x, int y){
         camino.add(new PuntoFloat(x,y));
     }
+    public void addDestino(Point p){camino.add(new PuntoFloat(p.x,p.y));}
 
     public int getPosX(){return (int)posicion.x;}
     public int getPosY(){return (int)posicion.y;}

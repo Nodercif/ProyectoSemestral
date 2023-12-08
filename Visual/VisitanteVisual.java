@@ -16,7 +16,7 @@ public class VisitanteVisual extends Mob{
     private Image imagen;
     private Visitante visitante;
     /** el indice que se ocupa en el grafo de Informacion Caminos. basicamente en que cruze esta */
-    private int indiceCruze;
+    public int indiceCruze;
 
     /**
      *
@@ -35,7 +35,8 @@ public class VisitanteVisual extends Mob{
     @Override
     public void tick(){
         super.tick();
-        System.out.println("posicion visitante: "+this.posicion.x+" "+this.posicion.y);
+        if(rand.nextInt(1000)<15)
+            InformacionCaminos.getInstance().moverVisitante(this);
     }
 
     public Image getImagen(){return imagen;}

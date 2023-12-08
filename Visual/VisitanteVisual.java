@@ -14,11 +14,11 @@ public class VisitanteVisual extends Mob{
     public VisitanteVisual(Visitante visitante) {
         super();
         this.visitante = visitante;
-        rand = new Random(123);
+        rand = new Random();
         this.setRapidez(1f);
         this.setPosicion(600,20);
-        imagen = (new ImageIcon(visitante.getArchivoImagen())).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH);
-
+        imagen = (new ImageIcon(visitante.getArchivoImagen())).getImage().getScaledInstance(30,50,Image.SCALE_SMOOTH);
     }
+
     public Image getImagen(){return imagen;}
 }

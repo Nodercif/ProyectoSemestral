@@ -89,10 +89,13 @@ public class PanelPrincipal extends JPanel {
         panelesHabitat[0].addAnimal(aniv);
         Visitante vis = new Visitante();
         visitantes.add(new VisitanteVisual(vis));
-        (visitantes.get(0)).addDestino(600,300);
+        (visitantes.get(0)).addDestino(600,80);
+        (visitantes.get(0)).addDestino(450,80);
+        (visitantes.get(0)).addDestino(450,300);
         vis = new VisitanteVIP();
         visitantes.add(new VisitanteVisual(vis));
-        (visitantes.get(1)).addDestino(500,300);
+        (visitantes.get(1)).addDestino(600,80);
+        (visitantes.get(1)).addDestino(800,80);
 
     }
     public static PanelPrincipal getInstance() {

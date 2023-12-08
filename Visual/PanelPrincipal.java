@@ -96,6 +96,7 @@ public class PanelPrincipal extends JPanel {
         visitantes.add(new VisitanteVisual(vis));
         (visitantes.get(1)).addDestino(600,80);
         (visitantes.get(1)).addDestino(800,80);
+        InformacionCaminos.getInstance();
 
     }
     public static PanelPrincipal getInstance() {

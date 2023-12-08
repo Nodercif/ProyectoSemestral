@@ -1,0 +1,3 @@
+nodo 600 80
+nodo 450 80
+conexion 0 1

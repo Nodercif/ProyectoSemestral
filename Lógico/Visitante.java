@@ -5,9 +5,11 @@ import java.util.Random;
 public class Visitante {
     protected Random rand = new Random();
     protected String nombre;
+    protected String archivoImagen;
     Animal animalFavorito;
     public Visitante() {
         this.nombre = InformacionVisitantes.getInstance().nombreRandom();
+        this.archivoImagen = "recursos/visitantes/visitanteGenerico"+rand.nextInt(1)+".png";
     }
     public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20);

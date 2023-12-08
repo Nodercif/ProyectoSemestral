@@ -7,6 +7,7 @@ public class VisitanteVIP extends Visitante {
     public VisitanteVIP() {
         this.nombre = InformacionVisitantes.getInstance().nombreRandomVIP();
         this.comentarios = InformacionVisitantes.getInstance().getComentariosVIP(this.nombre);
+        this.archivoImagen = "recursos/visitantes/"+this.nombre.replaceAll("\\s", "") + ".png";
     }
     public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20) + 20;

@@ -28,9 +28,13 @@ public abstract class Mob {
             float dx = siguiente.x - posicion.x;
             float dy = siguiente.y - posicion.y;
             if( (dx*dx + dy*dy)<25 )camino.remove(0);
-            float norma = (float)Math.sqrt(dx*dx+dy*dy);
-            posicion.x += rapidez * dx/norma;
-            posicion.y += rapidez * dy/norma;
+            float norma = (float)Math.sqrt(dx*dx+dy*dy)+0.00001f;
+            float pasoX = rapidez * dx/norma;
+            float pasoY = rapidez * dy/norma;
+            if(Math.abs(dx)<Math.abs(pasoX)) pasoX = dx;
+            if(Math.abs(dy)<Math.abs(pasoY)) pasoY = dy;
+            posicion.x += pasoX;
+            posicion.y += pasoY;
         }
     }
     public void addDestino(int x, int y){
@@ -49,6 +53,5 @@ public abstract class Mob {
     }
     public void setRapidez(float rapidez){
         this.rapidez = rapidez;
-        if(this.rapidez >= 5)this.rapidez = 4.99f;
     }
 }

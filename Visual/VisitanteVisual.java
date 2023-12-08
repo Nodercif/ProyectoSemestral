@@ -27,14 +27,15 @@ public class VisitanteVisual extends Mob{
         this.visitante = visitante;
         rand = new Random();
         this.indiceCruze = 0;
-        this.setRapidez(1f);
+        this.setRapidez(1.5f);
         this.setPosicion(InformacionCaminos.getInstance().getCruze(indiceCruze));
+        System.out.println("posicion visitante: "+this.posicion.x+" "+this.posicion.y);
         imagen = (new ImageIcon(visitante.getArchivoImagen())).getImage().getScaledInstance(30,50,Image.SCALE_SMOOTH);
     }
     @Override
     public void tick(){
         super.tick();
-
+        System.out.println("posicion visitante: "+this.posicion.x+" "+this.posicion.y);
     }
 
     public Image getImagen(){return imagen;}

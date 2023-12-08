@@ -29,4 +29,5 @@ public class Visitante {
         return InformacionVisitantes.getInstance().ComentarioRandom();
     }
     public String getNombre() {return nombre;}
+    public String getArchivoImagen(){return archivoImagen;}
 }

@@ -1,6 +1,8 @@
 package Visual;
 import Lógico.Animal;
 import Lógico.Animales.OsoPolar;
+import Lógico.Visitante;
+import Lógico.VisitanteVIP;
 import Lógico.ZooManager;
 
 import javax.imageio.ImageIO;
@@ -16,7 +18,7 @@ public class PanelPrincipal extends JPanel {
     static PanelPrincipal instance;
     public PanelHabitat panelesHabitat[] = new PanelHabitat[5];
     private PanelInformacion panelInformacion;
-    private ArrayList<VisitanteVisual> visitanteVisual;
+    private ArrayList<VisitanteVisual> visitantes;
     private Image fondo;
     private MenuDeCompra menuDeCompra;
     public PanelPrincipal() {
@@ -26,6 +28,7 @@ public class PanelPrincipal extends JPanel {
         add(menuDeCompra);
         panelInformacion = new PanelInformacion();
         add(panelInformacion);
+        visitantes = new ArrayList<VisitanteVisual>();
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){
@@ -72,11 +75,24 @@ public class PanelPrincipal extends JPanel {
                 }
             }
         });
+        //visitantes
+        Timer timer = new Timer(20, e -> {
+            for(VisitanteVisual v : visitantes){
+                v.tick();
+            }
+        });
+        timer.start();
         //testing
         Animal ani = new OsoPolar("jeff",panelesHabitat[0].getHabitat());
         AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
         aniv.addDestino(100,60);
         panelesHabitat[0].addAnimal(aniv);
+        Visitante vis = new Visitante();
+        visitantes.add(new VisitanteVisual(vis));
+        (visitantes.get(0)).addDestino(600,300);
+        vis = new VisitanteVIP();
+        visitantes.add(new VisitanteVisual(vis));
+        (visitantes.get(1)).addDestino(500,300);
 
     }
     public static PanelPrincipal getInstance() {
@@ -86,6 +102,9 @@ public class PanelPrincipal extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(fondo, 0, 0, this);
+        for(VisitanteVisual v : visitantes){
+            g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
+        }
         paintChildren(g);
     }
 }

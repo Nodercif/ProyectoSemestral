@@ -1,8 +1,11 @@
 package Logico;
 import java.util.ArrayList;
+import java.util.Random;
 /** La clase Habitat representa un espacio en el zoologico en el cual se podrán tener animales.
  * Hay cinco tipos de Habitats: Bosque, sabána, desierto, acuático y polar.
  * La vitalidad de cada animal dependerá de las condiciones del habitat en el que está: su temperatura y su humedad. */
+
+
 public class Habitat {
     private int temperatura;
     private int humedad;
@@ -11,6 +14,7 @@ public class Habitat {
     private int cantFruta;
     private int cantFollaje;
     private ArrayList<Animal> animales;
+    private Random rand = new Random();
 
     /** En el constructor de la clase se inicializan las condiciones del habitat.
      * @param temp indica la temperatura.
@@ -100,8 +104,28 @@ public class Habitat {
     public ArrayList<Animal> getAnimales(){
         return animales;
     }
+<<<<<<< HEAD
 
 
+=======
+    /** dos animales aleatorios se miran feo. si uno es mucho mas feroz que el otro lo mata */
+    public String dueloAnimal(){
+        if(animales.isEmpty())return null;
+        Animal ani1 = animales.get(rand.nextInt(animales.size()));
+        Animal ani2 = animales.get(rand.nextInt(animales.size()));
+        if(ani1.getFerocidad() > ani2.getFerocidad()+40){
+            String ret = ani1.getNombre()+" a matado a "+ani2.getNombre()+"!";
+            ret += " Parece que un "+ani1.getEspecie() + " y un "+ ani2.getEspecie()+" no se llevan bien.";
+            return ret;
+        }
+        if(ani2.getFerocidad() > ani1.getFerocidad()+40){
+            String ret = ani2.getNombre()+" a matado a "+ani1.getNombre()+"!";
+            ret += " Parece que un "+ani2.getEspecie() + " y un "+ ani1.getEspecie()+" no se llevan bien.";
+            return ret;
+        }
+        return null;
+    }
+>>>>>>> 1f630670f8b6e8a0a216a1f6f16e6e8ae9344ded
     public int getTemperatura() { return temperatura;}
     public int getHumedad() { return humedad; }
     public int getCantCarne() { return cantCarne; }

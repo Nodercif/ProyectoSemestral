@@ -79,23 +79,21 @@ public class PanelPrincipal extends JPanel {
                 }
             }
         });
-        //visitantes
-        Timer timer = new Timer(20, e -> {
-            for(VisitanteVisual v : visitantes){
-                v.tick();
-            }
-        });
-        timer.start();
         //testing
-        /*Animal ani = new OsoPolar(panelesHabitat[0].getHabitat());
-        AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
-        aniv.addDestino(100,60);
-        panelesHabitat[0].addAnimal(aniv);*/
         for(int i=0;i<9;i++){
             Visitante vis = new Visitante();
             visitantes.add(new VisitanteVisual(vis));
         }
 
+    }
+    /** la ventana va a llamar a tick cada 20 ms */
+    public void tick(){
+        for(VisitanteVisual v : visitantes){
+            v.tick();
+        }
+        for(int i=0;i<5;i++){
+            panelesHabitat[i].tick();
+        }
     }
     public static PanelPrincipal getInstance() {
         return instance;

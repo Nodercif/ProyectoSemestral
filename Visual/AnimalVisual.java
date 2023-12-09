@@ -25,10 +25,15 @@ public class AnimalVisual extends Mob {
         return imagen;
     }
     public void setImagen(Image imagen){this.imagen = imagen; }
+    public boolean estaVivo(){return animal.estaVivo();}
     @Override
     public void tick(){
         super.tick();
         if(rand.nextInt(1000)<5)
             addDestino(rand.nextInt(panelHabitat.getWidth()-50), rand.nextInt(panelHabitat.getHeight()-40));
+        if(rand.nextInt(100)<5){
+            animal.pasoTiempo();
+            animal.comerAlimento();
+        }
     }
 }

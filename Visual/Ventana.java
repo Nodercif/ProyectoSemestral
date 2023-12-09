@@ -18,7 +18,8 @@ public class Ventana extends JFrame {
         this.add(panelPrincipal);
         this.setVisible(true);
 
-        Timer timer = new Timer(10, e -> {
+        Timer timer = new Timer(20, e -> {
+            panelPrincipal.tick();
             repaint();
         });
         timer.start();

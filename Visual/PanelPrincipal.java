@@ -1,5 +1,9 @@
 package Visual;
 import Logico.ZooManager;
+import Logico.Animal;
+import Logico.Animales.OsoPolar;
+import Logico.Visitante;
+import Logico.VisitanteVIP;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,8 +19,7 @@ public class PanelPrincipal extends JPanel {
     public PanelHabitat panelesHabitat[] = new PanelHabitat[5];
     private MenuDeInformacion menuDeInformacion;
     private MenuDeCompra menuDeCompra;
-
-    private ArrayList<VisitanteVisual> visitanteVisual;
+    private ArrayList<VisitanteVisual> visitantes;
     private Image fondo;
     public PanelPrincipal() {
         super();
@@ -25,6 +28,7 @@ public class PanelPrincipal extends JPanel {
         add(menuDeCompra);
         menuDeInformacion = new MenuDeInformacion();
         add(menuDeInformacion);
+        visitantes = new ArrayList<VisitanteVisual>();
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){
@@ -37,7 +41,7 @@ public class PanelPrincipal extends JPanel {
         panelesHabitat[1].setBounds(130,380,300,160);
         panelesHabitat[2].setBounds(550,150,300,160);
         panelesHabitat[3].setBounds(550,380,300,160);
-        panelesHabitat[4].setBounds(930,250,300,160);
+        panelesHabitat[4].setBounds(900,250,300,160);
         for(int i=0;i<5;i++){this.add(panelesHabitat[i]);panelesHabitat[i].setVisible(true);}
 
         this.addMouseListener(new MouseAdapter() {
@@ -70,11 +74,22 @@ public class PanelPrincipal extends JPanel {
                 }
             }
         });
+        //visitantes
+        Timer timer = new Timer(20, e -> {
+            for(VisitanteVisual v : visitantes){
+                v.tick();
+            }
+        });
+        timer.start();
         //testing
         /*Animal ani = new OsoPolar(panelesHabitat[0].getHabitat());
         AnimalVisual aniv =new AnimalVisual(panelesHabitat[0],ani);
         aniv.addDestino(100,60);
         panelesHabitat[0].addAnimal(aniv);*/
+        for(int i=0;i<9;i++){
+            Visitante vis = new Visitante();
+            visitantes.add(new VisitanteVisual(vis));
+        }
 
     }
     public static PanelPrincipal getInstance() {
@@ -85,5 +100,8 @@ public class PanelPrincipal extends JPanel {
         super.paintComponent(g);
         g.drawImage(fondo, 0, 0, this);
         paintChildren(g);
+        for(VisitanteVisual v : visitantes){
+            g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
+        }
     }
 }

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class VisitanteVIP extends Visitante {
     private ArrayList<String> comentarios;
+    private int poscicionEnElCamino;
     public VisitanteVIP() {
         this.nombre = InformacionVisitantes.getInstance().nombreRandomVIP();
         this.comentarios = InformacionVisitantes.getInstance().getComentariosVIP(this.nombre);
+        this.archivoImagen = "recursos/visitantes/"+this.nombre.replaceAll("\\s", "") + ".png";
     }
     public String observarHabitat(Habitat hab) {
         int satisfaccion = rand.nextInt(20) + 20;

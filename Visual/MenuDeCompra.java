@@ -9,9 +9,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MenuDeCompra extends JPanel{
+    /**te fijas como te 'mueves' al apretar la flecha para ver mas botones? esto es esa poscicion*/
+    private int indiceDisplayBotones;
     private ArrayList<JButton> botonesDeCompraHabitat;
     private ArrayList<JButton> botonesDeCompraAnimal;
     private ArrayList<JButton> botonesDeCompraComida;
+    private ArrayList<JButton> botonesQueEstamosUsando;
+    private JButton botonMoverseIzquierda;
+    private JButton botonMoverseDerecha;
     private int numeroHabitatSeleccionado;
     private PanelHabitat panelHabitatSeleccionado;
     public static final int COMPRAHABITAT = 1;
@@ -22,6 +27,7 @@ public class MenuDeCompra extends JPanel{
         botonesDeCompraHabitat = new ArrayList<>();
         botonesDeCompraAnimal = new ArrayList<>();
         botonesDeCompraComida = new ArrayList<>();
+        indiceDisplayBotones = 0;
         //this.setBackground(Color.white);
         this.setBounds(20, 550, 1220, 120);
         for(int i = 0; i < 5; i++) {
@@ -87,6 +93,12 @@ public class MenuDeCompra extends JPanel{
                 this.add(b);
             }
         }
+    }
+    private void desplazarseDerecha(){
+        //TODO
+    }
+    private void desplazarseIzquierda(){
+        //TODO
     }
     public void comprarHabitat(int tipoHabitat) {
         Habitat habitat;

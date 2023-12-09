@@ -78,9 +78,9 @@ public class MenuDeCompra extends JPanel{
         panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
         this.setVisible(true);
         switch (tipoCompra){
-            case COMPRAHABITAT -> botonesQueEstamosUsando = botonesDeCompraHabitat;
-            case COMPRAANIMAL -> botonesQueEstamosUsando = botonesDeCompraAnimal;
-            case COMPRACOMIDA -> botonesQueEstamosUsando = botonesDeCompraComida;
+            case COMPRAHABITAT: botonesQueEstamosUsando = botonesDeCompraHabitat; break;
+            case COMPRAANIMAL: botonesQueEstamosUsando = botonesDeCompraAnimal; break;
+            case COMPRACOMIDA: botonesQueEstamosUsando = botonesDeCompraComida; break;
         }
         indiceDisplayBotones = 0;
         botonMoverseIzquierda.setVisible(false);

@@ -12,6 +12,7 @@ public class PanelInformacionAnimal extends JPanel {
     public PanelInformacionAnimal() {
         this.setLayout(null);
         this.setVisible(true);
+        informacionAnimal = new JTextArea();
     }
     public void setAnimal(Animal animal) {
         this.animal = animal;

@@ -5,6 +5,7 @@ import Logico.Animales.Panda;
 import Logico.Animales.Zorro;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -28,7 +29,8 @@ public class MenuDeCompra extends JPanel{
         botonesDeCompraAnimal = new ArrayList<>();
         botonesDeCompraComida = new ArrayList<>();
         indiceDisplayBotones = 0;
-        //this.setBackground(Color.white);
+        this.setBackground(new Color(220, 250, 180));
+        this.setBorder(new LineBorder(Color.gray,5));
         this.setBounds(20, 550, 1220, 120);
         this.setLayout(null);
         //inicializar los botones para comprar habitat
@@ -109,7 +111,7 @@ public class MenuDeCompra extends JPanel{
             this.remove(botonesQueEstamosUsando.get(i));
 
         indiceDisplayBotones--;
-        if(indiceDisplayBotones <= 1) {
+        if(indiceDisplayBotones <= 0) {
             botonMoverseIzquierda.setVisible(false);
         }
         addBotonesQueEstamosUsando();

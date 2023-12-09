@@ -90,9 +90,11 @@ public class MenuDeInformacion extends JPanel{
     }
     public void abrirMenuCompraAnimal() {
         menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRAANIMAL);
+        cerrarMenu();
     }
     public void abrirMenuCompraComida() {
         menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRACOMIDA);
+        cerrarMenu();
     }
     public void incrementarPoscicion() {
         if(habitat.getAnimales().size() > 0) {

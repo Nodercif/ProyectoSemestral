@@ -20,10 +20,13 @@ public abstract class Animal {
     /** que tan genial es el animal. la gente paga mas por ver un oso panda que una vaca */
     protected int atractividad;
     protected TipoAlimento comidaPreferida;
+    /** el habitat en el que reside este animal*/
     private Habitat habitat;
     private Random numeroAlAzar = new Random();
-    /** vivo es 0 si esta muerto y cualquier otro numero si esta vivo*/
-    private int vivo;
+    /** si el animal esta vivo*/
+    private boolean vivo;
+    /** el nombre de este animal en especifico, que no se confunda con la especie*/
+    private String nombre;
 
     /**
      * al crear un animal este tiene que estar en un habitat
@@ -31,7 +34,7 @@ public abstract class Animal {
      */
     public Animal(Habitat habitat){
         this.habitat = habitat;
-        vivo = 1;
+        vivo = true;
     }
     /** el animal da un bocado de la comida disponible, dependiendo de su tamaño y cuanta hambre tiene*/
     public void comerAlimento() {
@@ -51,18 +54,20 @@ public abstract class Animal {
     public void morir() {
         habitat.addComida(granditud, TipoAlimento.CARNE);
         habitat.removeAnimal(this);
-        vivo = 0;
+        vivo = false;
     }
     /**onomatopeya*/
     public abstract String getSonido();
     /**retorna 0 si esta muerto y cualquier otro numero si esta vivo*/
-    public int estaVivo(){return vivo;}
+    public boolean estaVivo(){return vivo;}
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     public int getMaxTemp(){return this.tempMax;}
     public int getMinTemp(){return this.tempMin;}
     public int getMaxHum(){return this.humMax;}
     public int getMinHum(){return this.humMin;}
     public int getAtractividad(){return this.atractividad;}
+    public int getFerocidad(){return  this.ferocidad;}
+    public String getNombre(){return  this.nombre;}
     public abstract String getEspecie();
     public abstract int getPrecio();
 }

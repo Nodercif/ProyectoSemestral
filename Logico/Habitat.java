@@ -1,5 +1,6 @@
 package Logico;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Habitat {
     private int temperatura;
@@ -9,6 +10,7 @@ public class Habitat {
     private int cantFruta;
     private int cantFollaje;
     private ArrayList<Animal> animales;
+    private Random rand = new Random();
 
     public Habitat(int temp, int hum) {
         animales = new ArrayList<>();
@@ -85,6 +87,23 @@ public class Habitat {
     }
     public ArrayList<Animal> getAnimales(){
         return animales;
+    }
+    /** dos animales aleatorios se miran feo. si uno es mucho mas feroz que el otro lo mata */
+    public String dueloAnimal(){
+        if(animales.isEmpty())return null;
+        Animal ani1 = animales.get(rand.nextInt(animales.size()));
+        Animal ani2 = animales.get(rand.nextInt(animales.size()));
+        if(ani1.getFerocidad() > ani2.getFerocidad()+40){
+            String ret = ani1.getNombre()+" a matado a "+ani2.getNombre()+"!";
+            ret += " Parece que un "+ani1.getEspecie() + " y un "+ ani2.getEspecie()+" no se llevan bien.";
+            return ret;
+        }
+        if(ani2.getFerocidad() > ani1.getFerocidad()+40){
+            String ret = ani2.getNombre()+" a matado a "+ani1.getNombre()+"!";
+            ret += " Parece que un "+ani2.getEspecie() + " y un "+ ani1.getEspecie()+" no se llevan bien.";
+            return ret;
+        }
+        return null;
     }
     public int getTemperatura() { return temperatura;}
     public int getHumedad() { return humedad; }

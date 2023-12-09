@@ -26,7 +26,7 @@ public class PanelPrincipal extends JPanel {
         instance = this;
         menuDeCompra = new MenuDeCompra();
         add(menuDeCompra);
-        menuDeInformacion = new MenuDeInformacion();
+        menuDeInformacion = new MenuDeInformacion(menuDeCompra);
         add(menuDeInformacion);
         visitantes = new ArrayList<VisitanteVisual>();
         try {
@@ -68,13 +68,14 @@ public class PanelPrincipal extends JPanel {
                     }
                     contador += 1;
                 }
-                /*
+                if(menuDeCompra.isVisible() && menuDeCompra.getBounds().contains(e.getPoint())){
+                    sinSeleccion = false;
+                    System.out.println("buaa");
+                }
                 if(sinSeleccion){
                     menuDeCompra.cerrarMenu();
                     menuDeInformacion.cerrarMenu();
                 }
-
-                 */
             }
         });
         //visitantes

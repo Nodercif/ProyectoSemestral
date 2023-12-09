@@ -22,14 +22,14 @@ public class MenuDeInformacion extends JPanel{
     private PanelInformacionAnimal panelInformacionAnimal;
     private int poscicionListaAnimales;
 
-    public MenuDeInformacion() {
+    public MenuDeInformacion(MenuDeCompra menuDeCompra) {
         this.setLayout(null);
         this.setVisible(false);
         this.setBackground(new Color(220, 250, 180));
         this.setBorder(new LineBorder(Color.gray,5));
         tituloPanel = new JLabel("Informacion Habitat");
         tituloPanel.setBounds(90, 10, 300, 10);
-        menuDeCompra = new MenuDeCompra();
+        this.menuDeCompra = menuDeCompra;
         panelInformacionAnimal = new PanelInformacionAnimal();
         //Botones:
         botonComprarAnimal = new JButton("<html>Comprar<br> Animal</html>");

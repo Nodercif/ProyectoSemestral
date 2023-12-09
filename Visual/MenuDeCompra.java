@@ -59,20 +59,18 @@ public class MenuDeCompra extends JPanel{
             botonesDeCompraComida.get(i).setIcon(icono);
         }
         //inicializar botones para navegar el menu
-        botonMoverseDerecha = new JButton();
+        botonMoverseDerecha = new JButton("->");
         botonMoverseDerecha.addActionListener(e -> desplazarseDerecha());
-        botonMoverseDerecha.setBounds(20,30,60,60);
-        this.add(botonMoverseDerecha);
-        botonMoverseDerecha.setVisible(true);
+        botonMoverseDerecha.setBounds(1140,30,60,60);
 
-        botonMoverseIzquierda = new JButton();
+        botonMoverseIzquierda = new JButton("<-");
         botonMoverseIzquierda.addActionListener(e -> desplazarseIzquierda());
-        botonMoverseIzquierda.setBounds(1140,30,60,60);
-        this.add(botonMoverseIzquierda);
-        botonMoverseDerecha.setVisible(true);
+        botonMoverseIzquierda.setBounds(20,30,60,60);
     }
     public void abrirMenu(int habitatSeleccionado, int tipoCompra) {
         cerrarMenu();
+        this.add(botonMoverseDerecha);
+        this.add(botonMoverseIzquierda);
         this.numeroHabitatSeleccionado = habitatSeleccionado;
         this.panelHabitatSeleccionado = PanelPrincipal.getInstance().panelesHabitat[numeroHabitatSeleccionado];
         panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
@@ -83,7 +81,9 @@ public class MenuDeCompra extends JPanel{
             case COMPRACOMIDA -> botonesQueEstamosUsando = botonesDeCompraComida;
         }
         indiceDisplayBotones = 0;
-        añadirBotonesQueEstamosUsando();
+        botonMoverseIzquierda.setVisible(false);
+        if(botonesQueEstamosUsando.size()<=4)botonMoverseDerecha.setVisible(false);
+        addBotonesQueEstamosUsando();
     }
     /** quita los botones que ya estan, aumenta el indice en uno y despues coloca los correctos*/
     private void desplazarseDerecha(){
@@ -91,8 +91,15 @@ public class MenuDeCompra extends JPanel{
             this.remove(botonesQueEstamosUsando.get(i));
         for(int i=0;i < (4-botonesQueEstamosUsando.size()-indiceDisplayBotones);i++)
             this.remove(botonesQueEstamosUsando.get(i));
+
         indiceDisplayBotones++;
-        añadirBotonesQueEstamosUsando();
+
+        if(indiceDisplayBotones >= botonesQueEstamosUsando.size()-4){
+            botonMoverseDerecha.setVisible(false);
+        }
+        addBotonesQueEstamosUsando();
+
+        botonMoverseIzquierda.setVisible(true);
     }
     /**quita los botones que ya estan y disminuye el indice en uno, despues coloca los botones a partir del indice*/
     private void desplazarseIzquierda(){
@@ -100,10 +107,16 @@ public class MenuDeCompra extends JPanel{
             this.remove(botonesQueEstamosUsando.get(i));
         for(int i=0;i < (4-botonesQueEstamosUsando.size()-indiceDisplayBotones);i++)
             this.remove(botonesQueEstamosUsando.get(i));
+
         indiceDisplayBotones--;
+        if(indiceDisplayBotones <= 1) {
+            botonMoverseIzquierda.setVisible(false);
+        }
+        addBotonesQueEstamosUsando();
+        botonMoverseDerecha.setVisible(true);
     }
     /** dado el arreglo de botones que tenemos seleccionado, coloca cuatro botones en el panel a partir del indice*/
-    private void añadirBotonesQueEstamosUsando(){
+    private void addBotonesQueEstamosUsando(){
         int counter=0;
         for(int i=indiceDisplayBotones; i < indiceDisplayBotones+4 && i<botonesQueEstamosUsando.size() ; i++){
             JButton b = botonesQueEstamosUsando.get(indiceDisplayBotones+counter);
@@ -220,8 +233,8 @@ public class MenuDeCompra extends JPanel{
             animal = (Animal)claseAnimal.getDeclaredConstructor().newInstance();
             animalVisual = new AnimalVisual(panelHabitatSeleccionado, animal);
             animalVisual.setImagen((new ImageIcon("recursos/animales/" + animal.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH));
-            panelHabitatSeleccionado.addAnimal(animalVisual);
             habitat.addAnimal(animal);
+            panelHabitatSeleccionado.addAnimal(animalVisual);
             ZooManager.getInstance().removeMoney(animal.getPrecio());
         }catch (Exception e){ }
     }

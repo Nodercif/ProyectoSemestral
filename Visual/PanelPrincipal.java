@@ -62,7 +62,7 @@ public class PanelPrincipal extends JPanel {
                         if(h.getHabitat() == null){
                             menuDeCompra.abrirMenu(contador, MenuDeCompra.COMPRAHABITAT);
                         }else{
-                            //abrir panel informacion
+                            //Abrir panel informacion
                             menuDeInformacion.abrirMenu(contador);
                         }
                     }

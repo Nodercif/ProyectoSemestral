@@ -31,6 +31,13 @@ public class MenuDeInformacion extends JPanel{
         tituloPanel.setBounds(90, 10, 300, 10);
         this.menuDeCompra = menuDeCompra;
         panelInformacionAnimal = new PanelInformacionAnimal();
+        // Menu de informacion de habitat:
+        informacionHabitat = new JTextArea();
+        informacionHabitat.setBounds(20, 130, 260, 45);
+        informacionHabitat.setBackground(new Color(160, 230, 140));
+        informacionHabitat.setFont(new Font("Arial", Font.BOLD, 12));
+        informacionHabitat.setEditable(false);
+        this.add(informacionHabitat);
         //Botones:
         botonComprarAnimal = new JButton("<html>Comprar<br> Animal</html>");
         botonComprarComida = new JButton("<html>Comprar<br> Comida</html>");
@@ -61,7 +68,6 @@ public class MenuDeInformacion extends JPanel{
         animalesVisuales = panelHabitatSeleccionado.getAnimalesVisual();
         habitat = panelHabitatSeleccionado.getHabitat();
         panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
-
         ////////////////////////////////////INFORMACION HABITAT////////////////////////////////////
         int cantidadAnimales;
         if(habitat.getAnimales() == null) {
@@ -70,14 +76,9 @@ public class MenuDeInformacion extends JPanel{
         else {
             cantidadAnimales = habitat.getAnimales().size();
         }
-        informacionHabitat = new JTextArea("Temperatura del habitat: " + habitat.getTemperatura() +
+        informacionHabitat.setText("Temperatura del habitat: " + habitat.getTemperatura() +
                 ".\nHumedad del habitat: " + habitat.getHumedad() + ".\nCantidad de animales en el habitat: " +
                 cantidadAnimales + ".");
-        informacionHabitat.setBounds(20, 130, 260, 45);
-        informacionHabitat.setBackground(new Color(160, 230, 140));
-        informacionHabitat.setFont(new Font("Arial", Font.BOLD, 12));
-        informacionHabitat.setEditable(false);
-        this.add(informacionHabitat);
         ////////////////////////////////////INFORMACION HABITAT////////////////////////////////////
 
         //Mostrar panel segun habitat seleccionada:

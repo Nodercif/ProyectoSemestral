@@ -27,13 +27,13 @@ public class Habitat {
         animales.add(animal);
     }
 
-    /**En el método removeAnimal se eliminan animales del habitat.
+    /** En el método removeAnimal se eliminan animales del habitat.
      * @param animal es el animal que se elimina.*/
     public void removeAnimal(Animal animal) {
         animales.remove(animal);
     }
 
-    /**En el método quitarComida se elimina comida del habitat.
+    /** En el método quitarComida se elimina comida del habitat.
      * @param cantComida es la cantidad de comida que se eliminará.
      * @param comida es el tipo de comida que se eliminará (Carne, pescado, follaje o fruta).
      * Si la cantidad a eliminar es mayor a la cantidad de comida que se tiene guardada, entonces la cantidad de
@@ -78,6 +78,10 @@ public class Habitat {
         }
         return 0;
     }
+
+    /** En el método addComida se agrega comida al habitat.
+     * @param cantComida es la cantidad de comida que se agregará.
+     * @param comida es el tipo de comida que se agregará (Carne, pescado, follaje o fruta). */
     public void addComida(int cantComida, TipoAlimento comida) {
         if (comida == TipoAlimento.CARNE)
             this.cantCarne += cantComida;
@@ -91,9 +95,13 @@ public class Habitat {
         if (comida == TipoAlimento.FOLLAJE)
             this.cantFollaje += cantComida;
     }
+
+    /** El método getAnimales entrega un ArrayList de los animales que hay en el habitat. */
     public ArrayList<Animal> getAnimales(){
         return animales;
     }
+
+
     public int getTemperatura() { return temperatura;}
     public int getHumedad() { return humedad; }
     public int getCantCarne() { return cantCarne; }

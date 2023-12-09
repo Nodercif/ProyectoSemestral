@@ -11,6 +11,7 @@ public class Habitat {
     private ArrayList<Animal> animales;
 
     public Habitat(int temp, int hum) {
+        animales = new ArrayList<>();
         this.temperatura = temp;
         this.humedad = hum;
     }

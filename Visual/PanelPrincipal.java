@@ -68,10 +68,13 @@ public class PanelPrincipal extends JPanel {
                     }
                     contador += 1;
                 }
+                /*
                 if(sinSeleccion){
                     menuDeCompra.cerrarMenu();
                     menuDeInformacion.cerrarMenu();
                 }
+
+                 */
             }
         });
         //visitantes

@@ -30,42 +30,46 @@ public class MenuDeCompra extends JPanel{
         indiceDisplayBotones = 0;
         //this.setBackground(Color.white);
         this.setBounds(20, 550, 1220, 120);
+        this.setLayout(null);
+        //inicializar los botones para comprar habitat
         for(int i = 0; i < 5; i++) {
             botonesDeCompraHabitat.add(new JButton());
             final int tipoHabitat = i+1;
             botonesDeCompraHabitat.get(i).addActionListener(e -> comprarHabitat(tipoHabitat));
-        }
-        int i = 0;
-        for(JButton b : botonesDeCompraHabitat){
             ImageIcon icono = new ImageIcon("recursos/botones/habitat" + i + ".png");
             icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
-            b.setIcon(icono);
-            i++;
+            botonesDeCompraHabitat.get(i).setIcon(icono);
         }
-        for(i = 0; i < 12; i++) {
+        //inizializar botones para comprar animales
+        for(int i = 0; i < 12; i++) {
             botonesDeCompraAnimal.add(new JButton());
             final int tipoAnimal = i + 1;
             botonesDeCompraAnimal.get(i).addActionListener(e -> comprarAnimal(tipoAnimal));
-        }
-        i = 0;
-        for(JButton b : botonesDeCompraAnimal){
             ImageIcon icono = new ImageIcon("recursos/botones/animal" + i + ".png");
             icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
-            b.setIcon(icono);
-            i++;
+            botonesDeCompraAnimal.get(i).setIcon(icono);
         }
-        for(i = 0; i < 5; i++) {
+        //inicializar botones para comprar comida
+        for(int i = 0; i < 5; i++) {
             botonesDeCompraComida.add(new JButton());
             final int tipoComida = i + 1;
             botonesDeCompraComida.get(i).addActionListener(e -> comprarComida(tipoComida));
-        }
-        i = 0;
-        for(JButton b : botonesDeCompraComida){
             ImageIcon icono = new ImageIcon("recursos/botones/comida" + i + ".png");
             icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
-            b.setIcon(icono);
-            i++;
+            botonesDeCompraComida.get(i).setIcon(icono);
         }
+        //inicializar botones para navegar el menu
+        botonMoverseDerecha = new JButton();
+        botonMoverseDerecha.addActionListener(e -> desplazarseDerecha());
+        botonMoverseDerecha.setBounds(20,30,60,60);
+        this.add(botonMoverseDerecha);
+        botonMoverseDerecha.setVisible(true);
+
+        botonMoverseIzquierda = new JButton();
+        botonMoverseIzquierda.addActionListener(e -> desplazarseIzquierda());
+        botonMoverseIzquierda.setBounds(1140,30,60,60);
+        this.add(botonMoverseIzquierda);
+        botonMoverseDerecha.setVisible(true);
     }
     public void abrirMenu(int habitatSeleccionado, int tipoCompra) {
         cerrarMenu();
@@ -73,32 +77,46 @@ public class MenuDeCompra extends JPanel{
         this.panelHabitatSeleccionado = PanelPrincipal.getInstance().panelesHabitat[numeroHabitatSeleccionado];
         panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
         this.setVisible(true);
-        if(tipoCompra == COMPRAHABITAT){
-            this.setLayout(new GridLayout(1,5));
-            for(JButton b : botonesDeCompraHabitat){
-                b.setVisible(true);
-                this.add(b);
-            }
-        }else if(tipoCompra == COMPRAANIMAL){
-            this.setLayout(new GridLayout(2,6));
-            for(JButton b : botonesDeCompraAnimal){
-                b.setVisible(true);
-                this.add(b);
-            }
+        switch (tipoCompra){
+            case COMPRAHABITAT -> botonesQueEstamosUsando = botonesDeCompraHabitat;
+            case COMPRAANIMAL -> botonesQueEstamosUsando = botonesDeCompraAnimal;
+            case COMPRACOMIDA -> botonesQueEstamosUsando = botonesDeCompraComida;
         }
-        else if(tipoCompra == COMPRACOMIDA) {
-            this.setLayout(new GridLayout(1,4));
-            for(JButton b : botonesDeCompraComida){
-                b.setVisible(true);
-                this.add(b);
-            }
-        }
+        indiceDisplayBotones = 0;
+        añadirBotonesQueEstamosUsando();
     }
+    /** quita los botones que ya estan, aumenta el indice en uno y despues coloca los correctos*/
     private void desplazarseDerecha(){
-        //TODO
+        for(int i=indiceDisplayBotones; i < i+4 && i<botonesQueEstamosUsando.size() ; i++)
+            this.remove(botonesQueEstamosUsando.get(i));
+        for(int i=0;i < (4-botonesQueEstamosUsando.size()-indiceDisplayBotones);i++)
+            this.remove(botonesQueEstamosUsando.get(i));
+        indiceDisplayBotones++;
+        añadirBotonesQueEstamosUsando();
     }
+    /**quita los botones que ya estan y disminuye el indice en uno, despues coloca los botones a partir del indice*/
     private void desplazarseIzquierda(){
-        //TODO
+        for(int i=indiceDisplayBotones; i < i+4 && i<botonesQueEstamosUsando.size() ; i++)
+            this.remove(botonesQueEstamosUsando.get(i));
+        for(int i=0;i < (4-botonesQueEstamosUsando.size()-indiceDisplayBotones);i++)
+            this.remove(botonesQueEstamosUsando.get(i));
+        indiceDisplayBotones--;
+    }
+    /** dado el arreglo de botones que tenemos seleccionado, coloca cuatro botones en el panel a partir del indice*/
+    private void añadirBotonesQueEstamosUsando(){
+        int counter=0;
+        for(int i=indiceDisplayBotones; i < indiceDisplayBotones+4 && i<botonesQueEstamosUsando.size() ; i++){
+            JButton b = botonesQueEstamosUsando.get(indiceDisplayBotones+counter);
+            b.setBounds(200+200*counter,10,100,100);
+            this.add(b);
+            counter++;
+        }
+        for(int i=0;i < (4-botonesQueEstamosUsando.size()-indiceDisplayBotones);i++){
+            JButton b = botonesQueEstamosUsando.get(indiceDisplayBotones+counter);
+            b.setBounds(200+200*counter,10,100,100);
+            this.add(b);
+            counter++;
+        }
     }
     public void comprarHabitat(int tipoHabitat) {
         Habitat habitat;

@@ -70,7 +70,6 @@ public class PanelPrincipal extends JPanel {
                 }
                 if(menuDeCompra.isVisible() && menuDeCompra.getBounds().contains(e.getPoint())){
                     sinSeleccion = false;
-                    System.out.println("buaa");
                 }
                 if(sinSeleccion){
                     menuDeCompra.cerrarMenu();

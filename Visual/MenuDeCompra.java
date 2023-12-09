@@ -237,7 +237,6 @@ public class MenuDeCompra extends JPanel{
             habitat.addAnimal(animal);
             panelHabitatSeleccionado.addAnimal(animalVisual);
             ZooManager.getInstance().removeMoney(animal.getPrecio());
-            System.out.println("hemos añadido un animal");
         }catch (Exception e){
             e.printStackTrace();
         }

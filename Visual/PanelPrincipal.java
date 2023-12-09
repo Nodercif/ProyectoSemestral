@@ -30,6 +30,7 @@ public class PanelPrincipal extends JPanel {
         menuDeInformacion = new MenuDeInformacion(menuDeCompra);
         add(menuDeInformacion);
         visitantes = new ArrayList<VisitanteVisual>();
+        contadorDeDinero = new JLabel("Dinero: " + ZooManager.getInstance().getMoney());
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){

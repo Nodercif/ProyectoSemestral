@@ -2,7 +2,7 @@ package Logico;
 import java.util.Random;
 
 /**
- * la clase animal representa los animales del zoologico. las subclases van a ser los animales especificos
+ * La clase animal representa los animales del zoologico. las subclases van a ser los animales especificos
  */
 public abstract class Animal {
     protected int tempMax;

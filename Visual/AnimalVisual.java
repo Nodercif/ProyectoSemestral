@@ -18,8 +18,7 @@ public class AnimalVisual extends Mob {
         this.animal = animal;
         rand = new Random();
         this.setRapidez(0.6f);
-        this.setPosicion(rand.nextInt(habitat.getWidth()), rand.nextInt(habitat.getHeight()));
-        //TODO cargar imagen del animal
+        this.setPosicion(rand.nextInt(habitat.getWidth())-30, rand.nextInt(habitat.getHeight())-30);
         imagen = (new ImageIcon("recursos/animales/animal.png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH);
     }
     public Image getImagen(){

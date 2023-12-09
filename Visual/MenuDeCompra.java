@@ -225,20 +225,22 @@ public class MenuDeCompra extends JPanel{
                 break;
         }
         //TODO resto de animales
-        cerrarMenu();
     }
     public <T> void comprarAnimal(Class<T> claseAnimal) {
         Habitat habitat = panelHabitatSeleccionado.getHabitat();
         Animal animal;
         AnimalVisual animalVisual;
         try {
-            animal = (Animal)claseAnimal.getDeclaredConstructor().newInstance();
+            animal = (Animal)claseAnimal.getDeclaredConstructor(Habitat.class).newInstance(habitat);
             animalVisual = new AnimalVisual(panelHabitatSeleccionado, animal);
             animalVisual.setImagen((new ImageIcon("recursos/animales/" + animal.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH));
             habitat.addAnimal(animal);
             panelHabitatSeleccionado.addAnimal(animalVisual);
             ZooManager.getInstance().removeMoney(animal.getPrecio());
-        }catch (Exception e){ }
+            System.out.println("hemos añadido un animal");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public void cerrarMenu(){
         this.setVisible(false);

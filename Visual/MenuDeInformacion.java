@@ -17,23 +17,29 @@ public class MenuDeInformacion extends JPanel{
     private JButton botonComprarComida;
     private JButton cambiarAnimalIzquierda;
     private JButton cambiarAnimalDerecha;
-    private JLabel tituloPanel;
+    private JLabel informacionHabitatLabel;
+    private JLabel informacionAnimalLabel;
     private JTextArea informacionHabitat;
     private PanelInformacionAnimal panelInformacionAnimal;
     private int poscicionListaAnimales;
 
     public MenuDeInformacion(MenuDeCompra menuDeCompra) {
+        // Panel:
         this.setLayout(null);
         this.setVisible(false);
         this.setBackground(new Color(220, 250, 180));
         this.setBorder(new LineBorder(Color.gray,5));
-        tituloPanel = new JLabel("Informacion Habitat");
-        tituloPanel.setBounds(90, 10, 300, 10);
+        // Etiquetas:
+        informacionHabitatLabel = new JLabel("Informacion Habitat");
+        informacionHabitatLabel.setBounds(90, 190, 300, 10);
+        informacionAnimalLabel = new JLabel("Animal Seleccionado");
+        informacionAnimalLabel.setBounds(90, 20, 300, 10);
+        // Menus:
         this.menuDeCompra = menuDeCompra;
         panelInformacionAnimal = new PanelInformacionAnimal();
         // Menu de informacion de habitat:
         informacionHabitat = new JTextArea();
-        informacionHabitat.setBounds(20, 130, 260, 45);
+        informacionHabitat.setBounds(20, 210, 260, 170);
         informacionHabitat.setBackground(new Color(160, 230, 140));
         informacionHabitat.setFont(new Font("Arial", Font.BOLD, 12));
         informacionHabitat.setEditable(false);
@@ -44,17 +50,18 @@ public class MenuDeInformacion extends JPanel{
         cambiarAnimalIzquierda = new JButton("<-");
         cambiarAnimalDerecha = new JButton("->");
         //Coordenadas botones:
-        botonComprarAnimal.setBounds(30, 370, 110, 80);
-        botonComprarComida.setBounds(160, 370, 110, 80);
-        cambiarAnimalIzquierda.setBounds(20, 70, 50, 30);
-        cambiarAnimalDerecha.setBounds(230, 70, 50, 30);
+        botonComprarAnimal.setBounds(30, 390, 100, 70);
+        botonComprarComida.setBounds(170, 390, 100, 70);
+        cambiarAnimalIzquierda.setBounds(40, 50, 50, 30);
+        cambiarAnimalDerecha.setBounds(210, 50, 50, 30);
         //Asignar accion:
         botonComprarAnimal.addActionListener(e -> abrirMenuCompraAnimal());
         botonComprarComida.addActionListener(e -> abrirMenuCompraComida());
         cambiarAnimalIzquierda.addActionListener(e -> disminuirPoscicion());
         cambiarAnimalDerecha.addActionListener(e -> incrementarPoscicion());
         //Agregar al panel:
-        this.add(tituloPanel);
+        this.add(informacionHabitatLabel);
+        this.add(informacionAnimalLabel);
         this.add(botonComprarAnimal);
         this.add(botonComprarComida);
         this.add(cambiarAnimalIzquierda);
@@ -76,9 +83,10 @@ public class MenuDeInformacion extends JPanel{
         else {
             cantidadAnimales = habitat.getAnimales().size();
         }
-        informacionHabitat.setText("Temperatura del habitat: " + habitat.getTemperatura() +
-                ".\nHumedad del habitat: " + habitat.getHumedad() + ".\nCantidad de animales en el habitat: " +
-                cantidadAnimales + ".");
+        informacionHabitat.setText("  Temperatura del habitat: " + habitat.getTemperatura() +
+                ".\n  Humedad del habitat: " + habitat.getHumedad() + ".\n  Cantidad de animales en el habitat: " +
+                cantidadAnimales + ".\n\n  Carne: " + habitat.getCantCarne() + ".\n\n  Pescado: " + habitat.getCantPescado() +
+                ".\n\n  Follaje: " + habitat.getCantFollaje() + ".\n\n  Fruta: " + habitat.getCantFruta() + ".");
         ////////////////////////////////////INFORMACION HABITAT////////////////////////////////////
 
         //Mostrar panel segun habitat seleccionada:

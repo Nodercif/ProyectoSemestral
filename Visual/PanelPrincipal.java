@@ -20,6 +20,7 @@ public class PanelPrincipal extends JPanel {
     private MenuDeInformacion menuDeInformacion;
     private MenuDeCompra menuDeCompra;
     private ArrayList<VisitanteVisual> visitantes;
+    private JLabel contadorDeDinero;
     private Image fondo;
     public PanelPrincipal() {
         super();
@@ -62,7 +63,7 @@ public class PanelPrincipal extends JPanel {
                         if(h.getHabitat() == null){
                             menuDeCompra.abrirMenu(contador, MenuDeCompra.COMPRAHABITAT);
                         }else{
-                            //Abrir panel informacion
+                            // Abrir panel informacion
                             menuDeInformacion.abrirMenu(contador);
                         }
                     }

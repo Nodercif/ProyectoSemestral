@@ -5,24 +5,23 @@ import Logico.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class PanelInformacionAnimal extends JPanel {
+public class PanelInformacionAnimal extends JTextArea {
     private Animal animal;
-    private JTextArea informacionAnimal;
     private Image imagenAnimal;
     public PanelInformacionAnimal() {
         this.setLayout(null);
-        this.setVisible(true);
-        informacionAnimal = new JTextArea();
     }
     public void setAnimal(Animal animal) {
+        this.setVisible(true);
         this.animal = animal;
-        informacionAnimal.setBounds(20, 180, 260, 180);
-        informacionAnimal.setBackground(new Color(160, 230, 140));
-        informacionAnimal.setFont(new Font("Arial", Font.BOLD, 14));
-        informacionAnimal = new JTextArea("Animal: " + animal.getEspecie() + ".\nNombre: " + /*animal.getNombre +*/
-                ".\nTemperaturas optimas: " + animal.getMinTemp() + " - " + animal.getMaxTemp() + ".\nHumedad optima: " +
-                animal.getMinHum() + " - " + animal.getMinHum() + ".");
-        this.add(informacionAnimal);
+        this.setBounds(20, 100, 260, 85);
+        this.setBackground(new Color(160, 230, 140));
+        this.setFont(new Font("Arial", Font.BOLD, 12));
+        this.setText("  Animal: " + animal.getEspecie() + ".\n  Nombre: " + /*animal.getNombre +*/
+                ".\n  Temperaturas optimas:\n  Desde los " + animal.getMinTemp() + " grados hasta los " + animal.getMaxTemp() +
+                " grados.\n  Humedad optima: Desde " + animal.getMinHum() + " a " + animal.getMinHum() +
+                ".\n  Tamaño del animal: " /*+ animal.getTamaño + "."*/);
+        this.setEditable(false);
     }
     public void setImagenAnimal(Image imagenAnimal) {
         this.imagenAnimal = imagenAnimal;

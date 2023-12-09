@@ -77,15 +77,25 @@ public class MenuDeCompra extends JPanel{
         this.panelHabitatSeleccionado = PanelPrincipal.getInstance().panelesHabitat[numeroHabitatSeleccionado];
         panelHabitatSeleccionado.esteHabitatEstaSeleccionado = true;
         this.setVisible(true);
-        switch (tipoCompra){
-            case COMPRAHABITAT: botonesQueEstamosUsando = botonesDeCompraHabitat; break;
-            case COMPRAANIMAL: botonesQueEstamosUsando = botonesDeCompraAnimal; break;
-            case COMPRACOMIDA: botonesQueEstamosUsando = botonesDeCompraComida; break;
+        switch (tipoCompra) {
+            case COMPRAHABITAT:
+                botonesQueEstamosUsando = botonesDeCompraHabitat;
+                break;
+            case COMPRAANIMAL:
+                botonesQueEstamosUsando = botonesDeCompraAnimal;
+                break;
+            case COMPRACOMIDA:
+                botonesQueEstamosUsando = botonesDeCompraComida;
+                break;
         }
         indiceDisplayBotones = 0;
         botonMoverseIzquierda.setVisible(false);
-        if(botonesQueEstamosUsando.size()<=4)botonMoverseDerecha.setVisible(false);
+        if (botonesQueEstamosUsando.size() <= 4) botonMoverseDerecha.setVisible(false);
+        else {
+            botonMoverseDerecha.setVisible(true);
+        }
         addBotonesQueEstamosUsando();
+
     }
     /** quita los botones que ya estan, aumenta el indice en uno y despues coloca los correctos*/
     private void desplazarseDerecha(){

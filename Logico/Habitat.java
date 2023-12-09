@@ -88,4 +88,8 @@ public class Habitat {
     }
     public int getTemperatura() { return temperatura;}
     public int getHumedad() { return humedad; }
+    public int getCantCarne() { return cantCarne; }
+    public int getCantPescado() { return cantPescado; }
+    public int getCantFruta() { return cantFruta; }
+    public int getCantFollaje() { return cantFollaje; }
 }

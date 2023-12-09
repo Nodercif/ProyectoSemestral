@@ -1,6 +1,6 @@
 package Visual;
 
-import Lógico.InformacionVisitantes;
+import Logico.InformacionVisitantes;
 
 import java.awt.*;
 import java.io.BufferedReader;

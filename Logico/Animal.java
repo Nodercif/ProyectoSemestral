@@ -1,38 +1,62 @@
 package Logico;
 import java.util.Random;
+
+/**
+ * la clase animal representa los animales del zoologico. las subclases van a ser los animales especificos
+ */
 public abstract class Animal {
     protected int tempMax;
     protected int tempMin;
     protected int humMax;
     protected int humMin;
-    protected int metabolismo;
+
+    /** el tamaño del animal. cuanta comida nececita basicamente*/
+    protected int granditud;
     protected int hambre = 0;
+
+    /** un animal que es significativamente mas feroz que otro lo va a atacar*/
     protected int ferocidad;
+
+    /** que tan genial es el animal. la gente paga mas por ver un oso panda que una vaca */
     protected int atractividad;
     protected TipoAlimento comidaPreferida;
     private Habitat habitat;
     private Random numeroAlAzar = new Random();
+    /** vivo es 0 si esta muerto y cualquier otro numero si esta vivo*/
+    private int vivo;
+
+    /**
+     * al crear un animal este tiene que estar en un habitat
+     * @param habitat el habitat donde vivira el animal
+     */
     public Animal(Habitat habitat){
         this.habitat = habitat;
+        vivo = 1;
     }
+    /** el animal da un bocado de la comida disponible, dependiendo de su tamaño y cuanta hambre tiene*/
     public void comerAlimento() {
-        int bocado = (int)((metabolismo * 0.8) + (hambre * 0.2));
+        int bocado = (int)((granditud * 0.8) + (hambre * 0.2));
         hambre -= habitat.quitarComida(bocado, comidaPreferida);
         if(hambre < 0) {
             hambre = 0;
         }
     }
     public void pasoTiempo() {
-        hambre += metabolismo * numeroAlAzar.nextFloat();
+        hambre += (int)(granditud * numeroAlAzar.nextFloat());
         if(hambre >= 1000) {
             this.morir();
         }
     }
+    /** el animal se quita del habitat, se le añade carne al habitat, y el animal deja de estar vivo*/
     public void morir() {
-        habitat.addComida(metabolismo, TipoAlimento.CARNE);
+        habitat.addComida(granditud, TipoAlimento.CARNE);
         habitat.removeAnimal(this);
+        vivo = 0;
     }
+    /**onomatopeya*/
     public abstract String getSonido();
+    /**retorna 0 si esta muerto y cualquier otro numero si esta vivo*/
+    public int estaVivo(){return vivo;}
     public void setHabitat(Habitat habitat) {this.habitat = habitat;}
     public int getMaxTemp(){return this.tempMax;}
     public int getMinTemp(){return this.tempMin;}
@@ -41,5 +65,4 @@ public abstract class Animal {
     public int getAtractividad(){return this.atractividad;}
     public abstract String getEspecie();
     public abstract int getPrecio();
-    //TODO agregar el resto de getters.
 }

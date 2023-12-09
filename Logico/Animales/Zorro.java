@@ -8,7 +8,7 @@ public class Zorro extends Animal {
         super(habitat);
         this.tempMax = 5;
         this.tempMin = -60;
-        this.metabolismo = 50;
+        this.granditud = 50;
         this.comidaPreferida = TipoAlimento.PESCADO;
         this.humMax = 999999;
         this.humMin = 999999;

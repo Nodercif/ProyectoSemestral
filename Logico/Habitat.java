@@ -104,10 +104,7 @@ public class Habitat {
     public ArrayList<Animal> getAnimales(){
         return animales;
     }
-<<<<<<< HEAD
 
-
-=======
     /** dos animales aleatorios se miran feo. si uno es mucho mas feroz que el otro lo mata */
     public String dueloAnimal(){
         if(animales.isEmpty())return null;
@@ -125,7 +122,7 @@ public class Habitat {
         }
         return null;
     }
->>>>>>> 1f630670f8b6e8a0a216a1f6f16e6e8ae9344ded
+
     public int getTemperatura() { return temperatura;}
     public int getHumedad() { return humedad; }
     public int getCantCarne() { return cantCarne; }

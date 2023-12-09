@@ -30,7 +30,10 @@ public class PanelPrincipal extends JPanel {
         menuDeInformacion = new MenuDeInformacion(menuDeCompra);
         add(menuDeInformacion);
         visitantes = new ArrayList<VisitanteVisual>();
-        contadorDeDinero = new JLabel("Dinero: " + ZooManager.getInstance().getMoney());
+        contadorDeDinero = new JLabel();
+        contadorDeDinero.setBounds(1100, 20, 300, 20);
+        contadorDeDinero.setFont(new Font("Arial", Font.BOLD, 14));
+        this.add(contadorDeDinero);
         try {
             fondo = ImageIO.read(new File("recursos/fondo.png"));
         }catch (IOException e){
@@ -94,6 +97,7 @@ public class PanelPrincipal extends JPanel {
         for(int i=0;i<5;i++){
             panelesHabitat[i].tick();
         }
+        contadorDeDinero.setText("Dinero: " + ZooManager.getInstance().getMoney());
     }
     public static PanelPrincipal getInstance() {
         return instance;

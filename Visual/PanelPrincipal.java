@@ -1,4 +1,5 @@
 package Visual;
+import Logico.TipoAlimento;
 import Logico.ZooManager;
 import Logico.Visitante;
 
@@ -54,7 +55,6 @@ public class PanelPrincipal extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                mostrarIconoInformacion(new IconoInformacion("click!",e.getPoint()));
                 int contador = 0;
                 boolean sinSeleccion = true;
                 if(menuDeInformacion.isVisible() && menuDeInformacion.getBounds().contains(e.getPoint()))
@@ -89,7 +89,6 @@ public class PanelPrincipal extends JPanel {
             Visitante vis = new Visitante();
             visitantes.add(new VisitanteVisual(vis));
         }
-        mostrarIconoInformacion(new IconoInformacion("hola",new Point(200,200)));
 
     }
     /** la ventana va a llamar a tick cada 20 ms */
@@ -102,13 +101,7 @@ public class PanelPrincipal extends JPanel {
         }
         contadorDeDinero.setText("Dinero: " + ZooManager.getInstance().getMoney());
 
-        Iterator<IconoInformacion> iterator = iconosInfo.iterator();
-        while (iterator.hasNext()){
-            IconoInformacion info = iterator.next();
-            if(info.tick()  == 0){
-                iterator.remove();
-            }
-        }
+        iconosInfo.removeIf(info -> info.tick() == 0);
     }
     /**Añade un iconoDeInformacion al panel. De esos que suben y se desvanecen*/
     public void mostrarIconoInformacion(IconoInformacion info){
@@ -133,12 +126,16 @@ public class PanelPrincipal extends JPanel {
         for(VisitanteVisual v : visitantes){
             g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
         }
+        Graphics2D g2d = (Graphics2D) g;
         //dibujar esos iconos pop up de informacion
         for(IconoInformacion inf : iconosInfo){
-            g.drawString(inf.getText(),inf.getX(),inf.getY());
+            g2d.setColor(inf.colorTexto);
+            g2d.drawString(inf.getText(),inf.getX(),inf.getY());
             if(inf.icono != null){
-                g.drawImage(inf.getImage(),inf.getX(), inf.getY()+3,this );
+                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, inf.colorTexto.getAlpha() / 255.0f));
+                g2d.drawImage(inf.getImage(),inf.getX(), inf.getY()+3,this );
             }
         }
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
     }
 }

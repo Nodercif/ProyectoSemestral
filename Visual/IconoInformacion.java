@@ -11,14 +11,14 @@ public class IconoInformacion{
     public static final int DINERO = 0;
     private String text = null;
     public ImageIcon icono = null;
-    public Color color;
+    public Color colorTexto;
     Point posicionInicial;
     Point pos;
 
     /**Constructor cuando quieres mostrar un texto*/
     public IconoInformacion(String texto, Point pos){
         text = texto;
-        color = Color.BLACK;
+        colorTexto = Color.BLACK;
         posicionInicial = new Point();
         this.pos = pos;
         posicionInicial.x = pos.x;
@@ -26,16 +26,59 @@ public class IconoInformacion{
     }
     /**Constructor cuando ganas o pierdes una cantidad de comida*/
     public IconoInformacion(int cantidad, TipoAlimento tipoAlimento, Point pos){
-        //TODO
+        posicionInicial = new Point();
+        this.pos = pos;
+        posicionInicial.x = pos.x;
+        posicionInicial.y = pos.y;
+        if(cantidad > 0){
+            colorTexto = Color.green;
+            text = "+";
+        }
+        else if(cantidad < 0){
+            colorTexto = Color.red;
+            text = "-";
+        }
+        else colorTexto = Color.gray;
+        text += cantidad;
+
+        if(tipoAlimento == TipoAlimento.CARNE){
+            icono = new ImageIcon("recursos/iconos/carne.png");
+        }
+        if(tipoAlimento == TipoAlimento.FOLLAJE){
+            icono = new ImageIcon("recursos/iconos/follaje.png");
+        }
+        if(tipoAlimento == TipoAlimento.FRUTA){
+            icono = new ImageIcon("recursos/iconos/fruta.png");
+        }
+        if(tipoAlimento == TipoAlimento.PESCADO){
+            icono = new ImageIcon("recursos/iconos/pescado.png");
+        }
     }
-    /**Construcor para cualquier recurso que no sea comida. Como dinero o otros que añadamos mas tarde*/
+    /**Constructor para cualquier recurso que no sea comida. Como dinero o otros que añadamos mas tarde*/
     public IconoInformacion(int cantidad, int tipoRecurso, Point pos){
-        //TODO
+        posicionInicial = new Point();
+        this.pos = pos;
+        posicionInicial.x = pos.x;
+        posicionInicial.y = pos.y;
+        if(cantidad > 0){
+            colorTexto = Color.green;
+            text = "+";
+        }
+        else if(cantidad < 0){
+            colorTexto = Color.red;
+            text = "-";
+        }
+        else colorTexto = Color.gray;
+        text += cantidad;
+        if(tipoRecurso == DINERO){
+            icono = new ImageIcon("recursos/iconos/dinero.png");
+        }
     }
     /** retorna 0 si ya a exisitido lo suficiente*/
     public int tick(){
         if(pos.y > posicionInicial.y-40){
             pos.y -= 1;
+            colorTexto = new Color(colorTexto.getRed(),colorTexto.getGreen(),colorTexto.getBlue(),colorTexto.getAlpha()-5);
             return 1;
         }
         return 0;

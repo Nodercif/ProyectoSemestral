@@ -54,7 +54,6 @@ public class PanelHabitat extends JPanel {
         for(AnimalVisual a : animalesVis){
             g.drawImage(a.getImagen(),a.getPosX(),a.getPosY(),this);
         }
-
          */
         if(esteHabitatEstaSeleccionado){
             g.setColor(Color.green);

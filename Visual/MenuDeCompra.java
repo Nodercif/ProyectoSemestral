@@ -143,6 +143,12 @@ public class MenuDeCompra extends JPanel{
             counter++;
         }
     }
+
+    /** Mediante el método comprarHabitat se puede escoger el tipo de habitat que se quiere comprar en el
+     área seleccionada.
+     @param tipoHabitat es el tipo de habitat que se seleccionó.
+     Una vez verificado el tipo de seleccion, se le asigna al habitat una representación visual mediante una imagen y se
+     resta dinero en el depósito general de dinero a travéz del ZooManager. */
     public void comprarHabitat(int tipoHabitat) {
         Habitat habitat;
         Image imagen;

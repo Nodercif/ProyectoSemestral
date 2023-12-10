@@ -6,12 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+/** La clase AnimalVisual se encarga de representar visualmente a los animales almacenados en cada habitat. */
 public class AnimalVisual extends Mob {
     private JPanel panelHabitat;
     private Random rand;
     private Image imagen;
     private Animal animal;
 
+    /** @param habitat es el panel en el que se encuentra el animal.
+     * @param animal es el animal con el que se está trabajando.
+     * El contructor recibe ambos parámetros, los inicializa y se encarga de asignarle una velocidad y poscicion aleatorias
+     dentro del panel habitat al animal, además de una imagen representativa. */
     public AnimalVisual(JPanel habitat, Animal animal) {
         super();
         this.panelHabitat = habitat;
@@ -25,6 +30,8 @@ public class AnimalVisual extends Mob {
         return imagen;
     }
     public void setImagen(Image imagen){this.imagen = imagen; }
+
+    /** Con el método estaVivo se verifica que el animal esté vivo mediante una boolean. */
     public boolean estaVivo(){return animal.estaVivo();}
     @Override
     public void tick(){

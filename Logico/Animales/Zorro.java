@@ -6,19 +6,19 @@ import Logico.TipoAlimento;
 public class Zorro extends Animal {
     public Zorro(Habitat habitat) {
         super(habitat);
-        this.tempMax = 5;
-        this.tempMin = -60;
+        this.tempMax = 24;
+        this.tempMin = -5;
         this.granditud = 50;
-        this.comidaPreferida = TipoAlimento.PESCADO;
-        this.humMax = 999999;
-        this.humMin = 999999;
-        this.ferocidad = 99999;
-        this.atractividad = 50;
+        this.comidaPreferida = TipoAlimento.FRUTA;
+        this.humMax = 20;
+        this.humMin = -10;
+        this.ferocidad = 50;
+        this.atractividad = 100;
     }
     @Override
     public String getSonido() {
-        return null;//TODO
+        return "jijiji";
     }
     public String getEspecie(){ return "zorro"; }
-    public int getPrecio(){ return 800;}
+    public int getPrecio(){ return 700;}
 }

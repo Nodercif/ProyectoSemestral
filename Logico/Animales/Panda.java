@@ -13,11 +13,11 @@ public class Panda extends Animal {
         this.humMax = 20;
         this.humMin = -20;
         this.ferocidad = 80;
-        this.atractividad = 200;
+        this.atractividad = 150;
     }
     @Override
     public String getSonido() {
-        return null;//TODO
+        return "grrr";
     }
     public String getEspecie(){ return "oso panda"; }
     public int getPrecio(){ return 1000;}

@@ -1,9 +1,6 @@
 package Visual;
 import Logico.*;
-import Logico.Animales.OsoPolar;
-import Logico.Animales.Panda;
-import Logico.Animales.Zorro;
-
+import Logico.Animales.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -39,7 +36,7 @@ public class MenuDeCompra extends JPanel{
             final int tipoHabitat = i+1;
             botonesDeCompraHabitat.get(i).addActionListener(e -> comprarHabitat(tipoHabitat));
             ImageIcon icono = new ImageIcon("recursos/botones/habitat" + i + ".png");
-            icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
+            icono.setImage(icono.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
             botonesDeCompraHabitat.get(i).setIcon(icono);
         }
         //inizializar botones para comprar animales
@@ -48,16 +45,16 @@ public class MenuDeCompra extends JPanel{
             final int tipoAnimal = i + 1;
             botonesDeCompraAnimal.get(i).addActionListener(e -> comprarAnimal(tipoAnimal));
             ImageIcon icono = new ImageIcon("recursos/botones/animal" + i + ".png");
-            icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
+            icono.setImage(icono.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
             botonesDeCompraAnimal.get(i).setIcon(icono);
         }
         //inicializar botones para comprar comida
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 4; i++) {
             botonesDeCompraComida.add(new JButton());
             final int tipoComida = i + 1;
             botonesDeCompraComida.get(i).addActionListener(e -> comprarComida(tipoComida));
             ImageIcon icono = new ImageIcon("recursos/botones/comida" + i + ".png");
-            icono.setImage(icono.getImage().getScaledInstance(240, 120, Image.SCALE_SMOOTH));
+            icono.setImage(icono.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
             botonesDeCompraComida.get(i).setIcon(icono);
         }
         //inicializar botones para navegar el menu
@@ -227,17 +224,53 @@ public class MenuDeCompra extends JPanel{
     }
     public void comprarAnimal(int tipoAnimal) {
         switch (tipoAnimal) {
-            // Animal Oso polar:
+            // Animal oso polar:
             case 1:
                 comprarAnimal(OsoPolar.class);
                 break;
-            // Animal Panda:
+            // Animal zorro artico:
             case 2:
+                comprarAnimal(ZorroArtico.class);
+                break;
+            // Animal camello:
+            case 3:
+                comprarAnimal(Camello.class);
+                break;
+            // Animal canguro:
+            case 4:
+                comprarAnimal(Canguro.class);
+                break;
+            // Animal ajolote:
+            case 5:
+                comprarAnimal(Ajolote.class);
+                break;
+            // Animal flamenco:
+            case 6:
+                comprarAnimal(Flamenco.class);
+                break;
+            // Animal cebra:
+            case 7:
+                comprarAnimal(Cebra.class);
+                break;
+            // Animal leon:
+            case 8:
+                comprarAnimal(Leon.class);
+                break;
+            // Animal oso panda:
+            case 9:
                 comprarAnimal(Panda.class);
                 break;
             // Animal zorro:
-            case 3:
+            case 10:
                 comprarAnimal(Zorro.class);
+                break;
+            //Animal jirafa:
+            case 11:
+                comprarAnimal(Jirafa.class);
+                break;
+            // Animal informatico:
+            case 12:
+                comprarAnimal(Informatico.class);
                 break;
         }
         //TODO resto de animales

@@ -44,6 +44,10 @@ public abstract class Mob {
 
     public int getPosX(){return (int)posicion.x;}
     public int getPosY(){return (int)posicion.y;}
+    public int getLargoCamino(){
+        if(camino != null)return camino.size();
+        return 0;
+    }
     public void setPosicion(int x, int y){
         posicion.x = x;
         posicion.y = y;

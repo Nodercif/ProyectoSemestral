@@ -27,15 +27,26 @@ public class VisitanteVisual extends Mob{
         this.visitante = visitante;
         rand = new Random();
         this.indiceCruze = 0;
-        this.setRapidez(1.5f);
+        this.setRapidez(0.7f);
         this.setPosicion(InformacionCaminos.getInstance().getCruze(indiceCruze));
         imagen = (new ImageIcon(visitante.getArchivoImagen())).getImage().getScaledInstance(30,50,Image.SCALE_SMOOTH);
     }
     @Override
     public void tick(){
         super.tick();
-        if(rand.nextInt(1000)<15)
-            InformacionCaminos.getInstance().moverVisitante(this);
+        if(getLargoCamino()<3){
+            int chance = 90;
+            if(InformacionCaminos.getInstance().esEsteCruzeAlLadoDeUnHabitat(indiceCruze))
+                chance=15;
+            if(rand.nextInt(10000)<chance)
+                InformacionCaminos.getInstance().moverVisitante(this);
+
+
+            if(rand.nextInt(100000)<chance*2){
+                InformacionCaminos.getInstance().hacerVisitanteIrAUnHabitat(this);
+            }
+        }
+
     }
 
     public Image getImagen(){return imagen;}

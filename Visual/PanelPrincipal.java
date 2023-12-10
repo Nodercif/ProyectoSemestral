@@ -83,7 +83,7 @@ public class PanelPrincipal extends JPanel {
             }
         });
         //testing
-        for(int i=0;i<9;i++){
+        for(int i=0;i<400;i++){
             Visitante vis = new Visitante();
             visitantes.add(new VisitanteVisual(vis));
         }

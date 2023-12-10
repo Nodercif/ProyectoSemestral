@@ -1,9 +1,6 @@
 package Visual;
 import Logico.ZooManager;
-import Logico.Animal;
-import Logico.Animales.OsoPolar;
 import Logico.Visitante;
-import Logico.VisitanteVIP;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PanelPrincipal extends JPanel {
     static PanelPrincipal instance;
@@ -22,6 +20,8 @@ public class PanelPrincipal extends JPanel {
     private ArrayList<VisitanteVisual> visitantes;
     private JLabel contadorDeDinero;
     private Image fondo;
+    private ArrayList<IconoInformacion> iconosInfo;
+
     public PanelPrincipal() {
         super();
         instance = this;
@@ -30,6 +30,7 @@ public class PanelPrincipal extends JPanel {
         menuDeInformacion = new MenuDeInformacion(menuDeCompra);
         add(menuDeInformacion);
         visitantes = new ArrayList<VisitanteVisual>();
+        iconosInfo = new ArrayList<>();
         contadorDeDinero = new JLabel();
         contadorDeDinero.setBounds(1100, 20, 300, 20);
         contadorDeDinero.setFont(new Font("Arial", Font.BOLD, 14));
@@ -53,6 +54,7 @@ public class PanelPrincipal extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                mostrarIconoInformacion(new IconoInformacion("click!",e.getPoint()));
                 int contador = 0;
                 boolean sinSeleccion = true;
                 if(menuDeInformacion.isVisible() && menuDeInformacion.getBounds().contains(e.getPoint()))
@@ -83,10 +85,11 @@ public class PanelPrincipal extends JPanel {
             }
         });
         //testing
-        for(int i=0;i<400;i++){
+        for(int i=0;i<40;i++){
             Visitante vis = new Visitante();
             visitantes.add(new VisitanteVisual(vis));
         }
+        mostrarIconoInformacion(new IconoInformacion("hola",new Point(200,200)));
 
     }
     /** la ventana va a llamar a tick cada 20 ms */
@@ -98,6 +101,18 @@ public class PanelPrincipal extends JPanel {
             panelesHabitat[i].tick();
         }
         contadorDeDinero.setText("Dinero: " + ZooManager.getInstance().getMoney());
+
+        Iterator<IconoInformacion> iterator = iconosInfo.iterator();
+        while (iterator.hasNext()){
+            IconoInformacion info = iterator.next();
+            if(info.tick()  == 0){
+                iterator.remove();
+            }
+        }
+    }
+    /**Añade un iconoDeInformacion al panel. De esos que suben y se desvanecen*/
+    public void mostrarIconoInformacion(IconoInformacion info){
+        iconosInfo.add(info);
     }
     public static PanelPrincipal getInstance() {
         return instance;
@@ -109,6 +124,9 @@ public class PanelPrincipal extends JPanel {
         paintChildren(g);
         for(VisitanteVisual v : visitantes){
             g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
+        }
+        for(IconoInformacion inf : iconosInfo){
+            g.drawString(inf.getText(),inf.getX(),inf.getY());
         }
     }
 }

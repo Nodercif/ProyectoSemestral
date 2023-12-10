@@ -7,16 +7,19 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Random;
-
+/**carga informacion como nombres y cosas que dicen de los visitantes*/
 public class InformacionVisitantes {
     private static InformacionVisitantes instance;
     private Random rand;
     private ArrayList<String> nombres;
+    /** esta un poco fuera de luger los nombres de animales aqui, pero no ameritan su propia clase*/
+    private ArrayList<String> nombresAnimales;
     private ArrayList<String> comentariosRandom;
     private ArrayList<String> nombresVIP;
     private Map<String,ArrayList<String>> compentariosVIP;
     public InformacionVisitantes(){
         nombres = new ArrayList<String>();
+        nombresAnimales = new ArrayList<>();
         comentariosRandom = new ArrayList<String>();
         nombresVIP = new ArrayList<String>();
         compentariosVIP = new HashMap<String,ArrayList<String>>();
@@ -25,12 +28,23 @@ public class InformacionVisitantes {
         String archivoDeComentarios = "recursos/comentarios.txt";
         String archivoDeNombresRandom = "recursos/nombres.txt";
         String archivoDeInformacionVIP = "recursos/visitantesVIP.txt";
+        String archivoDeNombresAnimales = "recursos/nombresAnimales.txt";
 
         //Leer nombres normales:
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoDeNombresRandom))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 nombres.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Leer nombres de animales:
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivoDeNombresAnimales))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                nombresAnimales.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,6 +86,9 @@ public class InformacionVisitantes {
     public String nombreRandom(){
         int n = rand.nextInt(nombres.size());
         return nombres.get(n);
+    }
+    public String nombreAnimalRandom(){
+        return nombresAnimales.get(rand.nextInt(nombresAnimales.size()));
     }
     public String nombreRandomVIP(){
         return nombresVIP.get(rand.nextInt(nombresVIP.size()));

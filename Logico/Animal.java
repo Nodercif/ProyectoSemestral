@@ -36,6 +36,7 @@ public abstract class Animal {
     public Animal(Habitat habitat){
         this.habitat = habitat;
         vivo = true;
+        this.nombre = InformacionVisitantes.getInstance().nombreAnimalRandom();
     }
     /** el animal da un bocado de la comida disponible, dependiendo de su tamaño y cuanta hambre tiene*/
     public void comerAlimento() {

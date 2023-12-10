@@ -11,7 +11,7 @@ public class AnimalVisual extends Mob {
     private JPanel panelHabitat;
     private Random rand;
     private Image imagen;
-    private Animal animal;
+    public Animal animal;
 
     /** @param habitat es el panel en el que se encuentra el animal.
      * @param animal es el animal con el que se está trabajando.
@@ -33,6 +33,8 @@ public class AnimalVisual extends Mob {
 
     /** Con el método estaVivo se verifica que el animal esté vivo mediante una boolean. */
     public boolean estaVivo(){return animal.estaVivo();}
+
+
     @Override
     public void tick(){
         super.tick();

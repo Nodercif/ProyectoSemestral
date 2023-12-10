@@ -29,10 +29,15 @@ public class PanelHabitat extends JPanel {
         if(habitat != null) if(rand.nextInt(1000)<15){
             habitat.dueloAnimal();
         }
+
         Iterator<AnimalVisual> iterator = animalesVis.iterator();
         while(iterator.hasNext()){
             AnimalVisual a = iterator.next();
             a.tick();
+            if(habitat.getTemperatura()>a.animal.getMaxTemp() && rand.nextInt(100)==69){
+                a.animal.morir();
+                PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(a.animal.getNombre()+" el "+a.animal.getEspecie()+" se a muerto de calor",new Point(getX(),getY())));
+            }
             if(!a.estaVivo()){
                 iterator.remove();
             }

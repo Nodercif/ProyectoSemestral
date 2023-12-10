@@ -27,7 +27,11 @@ public class PanelHabitat extends JPanel {
     }
     public void tick(){
         if(habitat != null) if(rand.nextInt(1000)<15){
-            habitat.dueloAnimal();
+            String resultado = habitat.dueloAnimal();
+            if(resultado != null){
+                IconoInformacion mensajeDeMuerte =new IconoInformacion(resultado,getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(mensajeDeMuerte);
+            }
         }
 
         Iterator<AnimalVisual> iterator = animalesVis.iterator();

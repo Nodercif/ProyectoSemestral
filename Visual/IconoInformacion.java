@@ -4,6 +4,7 @@ import javax.swing.*;
 import Logico.TipoAlimento;
 
 import java.awt.*;
+import java.util.Random;
 
 /** Un icono flotante en la pantalla que muestra algo de informacion. Ya sea texto o una cantidad de recurso que ganaste o perdiste*/
 
@@ -12,12 +13,19 @@ public class IconoInformacion{
     private String text = null;
     public ImageIcon icono = null;
     public Color colorTexto;
+    private int alphaInicial = 255;
     Point posicionInicial;
     Point pos;
+    /**Entre mayor perdurancia mas dura el mensaje*/
+    private int perdurancia = 1;
+    private int edad = 0;
 
     /**Constructor cuando quieres mostrar un texto*/
     public IconoInformacion(String texto, Point pos){
+        perdurancia = 200;
+        edad = 1;
         text = texto;
+        alphaInicial = 255;
         colorTexto = Color.BLACK;
         posicionInicial = new Point();
         this.pos = pos;
@@ -26,6 +34,9 @@ public class IconoInformacion{
     }
     /**Constructor cuando ganas o pierdes una cantidad de comida*/
     public IconoInformacion(int cantidad, TipoAlimento tipoAlimento, Point pos){
+        perdurancia = 50;
+        edad = 1;
+        alphaInicial = 255;
         posicionInicial = new Point();
         this.pos = pos;
         posicionInicial.x = pos.x;
@@ -56,6 +67,9 @@ public class IconoInformacion{
     }
     /**Constructor para cualquier recurso que no sea comida. Como dinero o otros que añadamos mas tarde*/
     public IconoInformacion(int cantidad, int tipoRecurso, Point pos){
+        perdurancia = 50;
+        edad = 1;
+        alphaInicial = 255;
         posicionInicial = new Point();
         this.pos = pos;
         posicionInicial.x = pos.x;
@@ -77,9 +91,10 @@ public class IconoInformacion{
     }
     /** retorna 0 si ya a exisitido lo suficiente*/
     public int tick(){
-        if(pos.y > posicionInicial.y-40){
-            pos.y -= 1;
-            colorTexto = new Color(colorTexto.getRed(),colorTexto.getGreen(),colorTexto.getBlue(),colorTexto.getAlpha()-5);
+        if(edad<perdurancia){
+            edad++;
+            pos.y = posicionInicial.y - 40*edad/perdurancia;
+            colorTexto = new Color(colorTexto.getRed(),colorTexto.getGreen(),colorTexto.getBlue(),alphaInicial-250*edad/perdurancia);
             return 1;
         }
         return 0;

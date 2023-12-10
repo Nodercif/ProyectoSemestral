@@ -110,11 +110,13 @@ public class Habitat {
         Animal ani1 = animales.get(rand.nextInt(animales.size()));
         Animal ani2 = animales.get(rand.nextInt(animales.size()));
         if(ani1.getFerocidad() > ani2.getFerocidad()+40){
+            ani2.morir();
             String ret = ani1.getNombre()+" a matado a "+ani2.getNombre()+"!";
             ret += " Parece que un "+ani1.getEspecie() + " y un "+ ani2.getEspecie()+" no se llevan bien.";
             return ret;
         }
         if(ani2.getFerocidad() > ani1.getFerocidad()+40){
+            ani1.morir();
             String ret = ani2.getNombre()+" a matado a "+ani1.getNombre()+"!";
             ret += " Parece que un "+ani2.getEspecie() + " y un "+ ani1.getEspecie()+" no se llevan bien.";
             return ret;

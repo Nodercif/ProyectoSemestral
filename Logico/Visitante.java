@@ -10,7 +10,7 @@ public class Visitante {
     protected int asombro;
     public Visitante() {
         this.nombre = InformacionVisitantes.getInstance().nombreRandom();
-        this.archivoImagen = "recursos/visitantes/visitanteGenerico"+rand.nextInt(1)+".png";
+        this.archivoImagen = "recursos/visitantes/visitanteGenerico"+rand.nextInt(8)+".png";
     }
     public String observarHabitat(Habitat hab) {
         asombro = 0;

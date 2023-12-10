@@ -91,12 +91,12 @@ public class PanelPrincipal extends JPanel {
     }
     /** la ventana va a llamar a tick cada 20 ms */
     public void tick(){
-        if(rand.nextInt(7000)<=15){
+        if(rand.nextInt(7000)<=16){
             VisitanteVisual vis = new VisitanteVisual(new Visitante());
             InformacionCaminos.getInstance().moverVisitante(vis);
             visitantes.add(vis);
         }
-        if(rand.nextInt(7000)<=3){
+        if(rand.nextInt(7000)<=2){
             VisitanteVisual vis = new VisitanteVisual(new VisitanteVIP());
             InformacionCaminos.getInstance().moverVisitante(vis);
             visitantes.add(vis);

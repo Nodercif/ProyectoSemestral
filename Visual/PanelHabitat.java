@@ -49,17 +49,15 @@ public class PanelHabitat extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         //super.paintComponent(g);
+        /*
         g.drawImage(imagenHabitat, 0, 0, this);
-        Graphics2D g2d = (Graphics2D)g;
-
         for(AnimalVisual a : animalesVis){
-            int x = a.getPosX();
-            int y = a.getPosY();
-            g2d.drawImage(a.getImagen(),a.getPosX(),a.getPosY(),this);
+            g.drawImage(a.getImagen(),a.getPosX(),a.getPosY(),this);
         }
+         */
         if(esteHabitatEstaSeleccionado){
-            g2d.setColor(Color.green);
-            g2d.drawOval(10 ,10, 10, 10);
+            g.setColor(Color.green);
+            g.drawOval(10 ,10, 10, 10);
         }
     }
 }

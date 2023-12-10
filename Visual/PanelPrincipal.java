@@ -1,9 +1,7 @@
 package Visual;
+import Logico.TipoAlimento;
 import Logico.ZooManager;
-import Logico.Animal;
-import Logico.Animales.OsoPolar;
 import Logico.Visitante;
-import Logico.VisitanteVIP;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PanelPrincipal extends JPanel {
     static PanelPrincipal instance;
@@ -22,6 +21,8 @@ public class PanelPrincipal extends JPanel {
     private ArrayList<VisitanteVisual> visitantes;
     private JLabel contadorDeDinero;
     private Image fondo;
+    private ArrayList<IconoInformacion> iconosInfo;
+
     public PanelPrincipal() {
         super();
         instance = this;
@@ -30,6 +31,7 @@ public class PanelPrincipal extends JPanel {
         menuDeInformacion = new MenuDeInformacion(menuDeCompra);
         add(menuDeInformacion);
         visitantes = new ArrayList<VisitanteVisual>();
+        iconosInfo = new ArrayList<>();
         contadorDeDinero = new JLabel();
         contadorDeDinero.setBounds(1100, 20, 300, 20);
         contadorDeDinero.setFont(new Font("Arial", Font.BOLD, 14));
@@ -83,7 +85,7 @@ public class PanelPrincipal extends JPanel {
             }
         });
         //testing
-        for(int i=0;i<400;i++){
+        for(int i=0;i<40;i++){
             Visitante vis = new Visitante();
             visitantes.add(new VisitanteVisual(vis));
         }
@@ -98,6 +100,12 @@ public class PanelPrincipal extends JPanel {
             panelesHabitat[i].tick();
         }
         contadorDeDinero.setText("Dinero: " + ZooManager.getInstance().getMoney());
+
+        iconosInfo.removeIf(info -> info.tick() == 0);
+    }
+    /**Añade un iconoDeInformacion al panel. De esos que suben y se desvanecen*/
+    public void mostrarIconoInformacion(IconoInformacion info){
+        iconosInfo.add(info);
     }
     public static PanelPrincipal getInstance() {
         return instance;
@@ -105,10 +113,29 @@ public class PanelPrincipal extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //dibujar fondo
         g.drawImage(fondo, 0, 0, this);
-        paintChildren(g);
+        //dibujar paneles
+        for(PanelHabitat p : panelesHabitat){
+            g.drawImage(p.imagenHabitat,p.getX(),p.getY(),this);
+            for(AnimalVisual a : p.getAnimalesVisual()){
+                g.drawImage(a.getImagen(),a.getPosX()+p.getX(),a.getPosY()+p.getY(),this);
+            }
+        }
+        //dibujar visitantes
         for(VisitanteVisual v : visitantes){
             g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
         }
+        Graphics2D g2d = (Graphics2D) g;
+        //dibujar esos iconos pop up de informacion
+        for(IconoInformacion inf : iconosInfo){
+            g2d.setColor(inf.colorTexto);
+            g2d.drawString(inf.getText(),inf.getX(),inf.getY());
+            if(inf.icono != null){
+                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, inf.colorTexto.getAlpha() / 255.0f));
+                g2d.drawImage(inf.getImage(),inf.getX(), inf.getY()+3,this );
+            }
+        }
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
     }
 }

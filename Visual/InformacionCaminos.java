@@ -1,5 +1,6 @@
 package Visual;
 
+import Logico.Habitat;
 import Logico.InformacionVisitantes;
 import Logico.Visitante;
 
@@ -26,6 +27,8 @@ public class InformacionCaminos {
 
     /** los cruzes que estan cerca de un habitat. Si un visitante esta en uno de estos entonces puede ver el habitat */
     private ArrayList<Point> cruzesDeHabitat = new ArrayList<Point>();
+    /** dado un cruze adyacente a un habitat, guarda el indice de este habitat en panelPrincipal*/
+    private Map<Point,Integer> indicesHabitats= new HashMap<>();
 
     /**
      * un mapa que guarda una lista de cruzes a los que se puede llegar desde cada cruze
@@ -62,8 +65,11 @@ public class InformacionCaminos {
                     listaDeAdyacencia.get(cruzeB).add(cruzeA);
                 }
                 if(Objects.equals(valores[0],"habitat")){
-                    //si es un habitat le sigue el numero del habitat
-                    cruzesDeHabitat.add(cruzes.get(Integer.parseInt(valores[1])));
+                    //si es un habitat le sigue el indice del nodo de los cruzes,
+                    //luego el indice del habitat del cual esta cerca
+                    Point cruze = cruzes.get(Integer.parseInt(valores[1]));
+                    cruzesDeHabitat.add(cruze);
+                    indicesHabitats.put(cruze,Integer.parseInt(valores[2]));
                 }
             }
         } catch (IOException e) {
@@ -75,6 +81,12 @@ public class InformacionCaminos {
         return cruzes.get(indice);
     }
     public int getCantCruzes(){return cruzes.size();}
+    public Habitat getHabitat(int indiceCruze){
+        Point nodo = cruzes.get(indiceCruze);
+        if(!cruzesDeHabitat.contains(nodo))return null;
+        PanelHabitat panelHabitat = PanelPrincipal.getInstance().panelesHabitat[indicesHabitats.get(nodo)];
+        return panelHabitat.getHabitat();
+    }
 
     /**
      * toma un visitante y le añade como destino un cruze que tenga conexion con el cruze en el que esta
@@ -87,9 +99,7 @@ public class InformacionCaminos {
         vis.addDestino(siguienteCruze);
         vis.indiceCruze = cruzes.indexOf(siguienteCruze);
     }
-
-    /** le añade destinos al visitante de forma que termine en un habitat. Usa Dijkstra por que no se mas algoritmos*/
-    public void hacerVisitanteIrAUnHabitat(VisitanteVisual vis){
+    public void irA(VisitanteVisual vis, int indiceLLegada){
         int cantidadDeNodos = cruzes.size();
         Map<Point, Point> previos = new HashMap<>();
         Map<Point, Integer> distancias = new HashMap<>();
@@ -113,7 +123,7 @@ public class InformacionCaminos {
                 }
             }
         }
-        Point destino = cruzesDeHabitat.get(rand.nextInt(cruzesDeHabitat.size()));
+        Point destino = cruzes.get(indiceLLegada);
         ArrayList<Point> ruta = new ArrayList<>();
         ruta.add(destino);
         while(ruta.get(ruta.size()-1) != origen){
@@ -126,6 +136,10 @@ public class InformacionCaminos {
             vis.addDestino(ruta.get(i));
         }
         vis.indiceCruze = cruzes.indexOf(destino);
+    }
+    /** le añade destinos al visitante de forma que termine en un habitat. Usa Dijkstra por que no se mas algoritmos*/
+    public void hacerVisitanteIrAUnHabitat(VisitanteVisual vis){
+        irA(vis,cruzes.indexOf(cruzesDeHabitat.get(rand.nextInt(cruzesDeHabitat.size()))));
     }
     public boolean esEsteCruzeAlLadoDeUnHabitat(int indiceCruze){
         if(indiceCruze > cruzes.size()-1)return false;

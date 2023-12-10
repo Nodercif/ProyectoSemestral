@@ -13,6 +13,7 @@ public class Panda extends Animal {
         this.humMax = 999999;
         this.humMin = 999999;
         this.ferocidad = 99999;
+        this.atractividad = 200;
     }
     @Override
     public String getSonido() {

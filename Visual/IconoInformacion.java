@@ -60,6 +60,7 @@ public class IconoInformacion{
         this.pos = pos;
         posicionInicial.x = pos.x;
         posicionInicial.y = pos.y;
+        text = "";
         if(cantidad > 0){
             colorTexto = Color.green;
             text = "+";

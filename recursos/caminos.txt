@@ -80,19 +80,18 @@ conexion 36 37
 conexion 37 38
 conexion 37 39
 conexion 39 27
-habitat 7
-habitat 10
-habitat 4
-habitat 5
-habitat 23
-habitat 26
-habitat 13
-habitat 21
-habitat 16
-habitat 30
-habitat 17
-habitat 34
-habitat 31
-habitat 28
-habitat 38
-habitat 38
+habitat 7 0
+habitat 10 0
+habitat 4 0
+habitat 5 2
+habitat 23 2
+habitat 26 2
+habitat 13 1
+habitat 21 1
+habitat 16 1
+habitat 30 3
+habitat 17 3
+habitat 34 3
+habitat 31 4
+habitat 28 4
+habitat 38 4

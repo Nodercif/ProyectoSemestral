@@ -1,5 +1,6 @@
 package Visual;
 import Logico.TipoAlimento;
+import Logico.VisitanteVIP;
 import Logico.ZooManager;
 import Logico.Visitante;
 
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 public class PanelPrincipal extends JPanel {
     static PanelPrincipal instance;
@@ -22,6 +24,7 @@ public class PanelPrincipal extends JPanel {
     private JLabel contadorDeDinero;
     private Image fondo;
     private ArrayList<IconoInformacion> iconosInfo;
+    private Random rand = new Random();
 
     public PanelPrincipal() {
         super();
@@ -84,16 +87,20 @@ public class PanelPrincipal extends JPanel {
                 }
             }
         });
-        //testing
-        for(int i=0;i<8;i++){
-            Visitante vis = new Visitante();
-            visitantes.add(new VisitanteVisual(vis));
-            InformacionCaminos.getInstance().moverVisitante(visitantes.get(i));
-        }
 
     }
     /** la ventana va a llamar a tick cada 20 ms */
     public void tick(){
+        if(rand.nextInt(7000)<=15){
+            VisitanteVisual vis = new VisitanteVisual(new Visitante());
+            InformacionCaminos.getInstance().moverVisitante(vis);
+            visitantes.add(vis);
+        }
+        if(rand.nextInt(7000)<=3){
+            VisitanteVisual vis = new VisitanteVisual(new VisitanteVIP());
+            InformacionCaminos.getInstance().moverVisitante(vis);
+            visitantes.add(vis);
+        }
         for(VisitanteVisual v : visitantes){
             v.tick();
         }
@@ -102,6 +109,7 @@ public class PanelPrincipal extends JPanel {
         }
         contadorDeDinero.setText("Dinero: " + ZooManager.getInstance().getMoney());
 
+        visitantes.removeIf(vis -> vis.satisfecho&&vis.enLaSalida());
         iconosInfo.removeIf(info -> info.tick() == 0);
     }
     /**Añade un iconoDeInformacion al panel. De esos que suben y se desvanecen*/

@@ -13,6 +13,7 @@ public class OsoPolar extends Animal {
         this.humMax = 999999;
         this.humMin = 999999;
         this.ferocidad = 99999;
+        this.atractividad = 100;
     }
     @Override
     public String getSonido() {

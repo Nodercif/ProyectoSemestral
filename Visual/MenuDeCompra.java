@@ -49,7 +49,7 @@ public class MenuDeCompra extends JPanel{
             botonesDeCompraAnimal.get(i).setIcon(icono);
         }
         //inicializar botones para comprar comida
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 4; i++) {
             botonesDeCompraComida.add(new JButton());
             final int tipoComida = i + 1;
             botonesDeCompraComida.get(i).addActionListener(e -> comprarComida(tipoComida));

@@ -12,12 +12,12 @@ public class OsoPolar extends Animal {
         this.comidaPreferida = TipoAlimento.PESCADO;
         this.humMax = 100;
         this.humMin = 20;
-        this.ferocidad = 100;
-        this.atractividad = 100;
+        this.ferocidad = 120;
+        this.atractividad = 200;
     }
     @Override
     public String getSonido() {
-        return null;//TODO
+        return "grrrr";
     }
     public String getEspecie(){ return "oso polar"; }
     public int getPrecio(){ return 1000;}

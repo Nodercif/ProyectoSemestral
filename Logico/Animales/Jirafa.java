@@ -3,8 +3,8 @@ import Logico.Animal;
 import Logico.Habitat;
 import Logico.TipoAlimento;
 
-public class Panda extends Animal {
-    public Panda(Habitat habitat) {
+public class Jirafa extends Animal {
+    public Jirafa(Habitat habitat) {
         super(habitat);
         this.tempMax = 30;
         this.tempMin = 0;
@@ -12,13 +12,13 @@ public class Panda extends Animal {
         this.comidaPreferida = TipoAlimento.FOLLAJE;
         this.humMax = 20;
         this.humMin = -20;
-        this.ferocidad = 80;
-        this.atractividad = 150;
+        this.ferocidad = 20;
+        this.atractividad = 250;
     }
     @Override
     public String getSonido() {
-        return "grrr";
+        return "guac";
     }
-    public String getEspecie(){ return "oso panda"; }
-    public int getPrecio(){ return 1000;}
+    public String getEspecie(){ return "jirafa"; }
+    public int getPrecio(){ return 800;}
 }

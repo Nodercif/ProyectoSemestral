@@ -1,11 +1,10 @@
 package Logico;
 import java.util.ArrayList;
 import java.util.Random;
+
 /** La clase Habitat representa un espacio en el zoologico en el cual se podrán tener animales.
  * Hay cinco tipos de Habitats: Bosque, sabána, desierto, acuático y polar.
  * La vitalidad de cada animal dependerá de las condiciones del habitat en el que está: su temperatura y su humedad. */
-
-
 public class Habitat {
     private int temperatura;
     private int humedad;

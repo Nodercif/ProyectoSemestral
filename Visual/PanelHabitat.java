@@ -2,6 +2,7 @@ package Visual;
 
 import Logico.Animal;
 import Logico.Habitat;
+import Logico.TipoAlimento;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,8 +30,8 @@ public class PanelHabitat extends JPanel {
         if(habitat != null) if(rand.nextInt(1000)<15){
             String resultado = habitat.dueloAnimal();
             if(resultado != null){
-                IconoInformacion mensajeDeMuerte =new IconoInformacion(resultado,getLocation());
-                PanelPrincipal.getInstance().mostrarIconoInformacion(mensajeDeMuerte);
+                IconoInformacion inf =new IconoInformacion(resultado,getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(inf);
             }
         }
 
@@ -60,6 +61,8 @@ public class PanelHabitat extends JPanel {
             }
             if(!a.estaVivo()){
                 iterator.remove();
+                IconoInformacion masCarne = new IconoInformacion(a.animal.getGranditud(), TipoAlimento.CARNE,new Point(a.getPosX()+getX(),a.getPosY()+getY()));
+                PanelPrincipal.getInstance().mostrarIconoInformacion(masCarne);
             }
         }
     }

@@ -89,6 +89,8 @@ public class IconoInformacion{
             icono = new ImageIcon("recursos/iconos/dinero.png");
         }
     }
+
+
     /** retorna 0 si ya a exisitido lo suficiente*/
     public int tick(){
         if(edad<perdurancia){

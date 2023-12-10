@@ -120,13 +120,25 @@ public class PanelPrincipal extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //dibujar fondo
         g.drawImage(fondo, 0, 0, this);
-        paintChildren(g);
+        //dibujar paneles
+        for(PanelHabitat p : panelesHabitat){
+            g.drawImage(p.imagenHabitat,p.getX(),p.getY(),this);
+            for(AnimalVisual a : p.getAnimalesVisual()){
+                g.drawImage(a.getImagen(),a.getPosX()+p.getX(),a.getPosY()+p.getY(),this);
+            }
+        }
+        //dibujar visitantes
         for(VisitanteVisual v : visitantes){
             g.drawImage(v.getImagen(),v.getPosX(), v.getPosY(), this);
         }
+        //dibujar esos iconos pop up de informacion
         for(IconoInformacion inf : iconosInfo){
             g.drawString(inf.getText(),inf.getX(),inf.getY());
+            if(inf.icono != null){
+                g.drawImage(inf.getImage(),inf.getX(), inf.getY()+3,this );
+            }
         }
     }
 }

@@ -9,13 +9,16 @@ import java.awt.*;
 
 public class IconoInformacion{
     public static final int DINERO = 0;
-    private String text;
+    private String text = null;
+    public ImageIcon icono = null;
+    public Color color;
     Point posicionInicial;
     Point pos;
 
     /**Constructor cuando quieres mostrar un texto*/
     public IconoInformacion(String texto, Point pos){
         text = texto;
+        color = Color.BLACK;
         posicionInicial = new Point();
         this.pos = pos;
         posicionInicial.x = pos.x;
@@ -37,7 +40,7 @@ public class IconoInformacion{
         }
         return 0;
     }
-
+    public Image getImage(){return icono.getImage();}
     public String getText() {return text;}
     public int getX(){return pos.x;}
     public int getY(){return pos.y;}

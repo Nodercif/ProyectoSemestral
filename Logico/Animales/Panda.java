@@ -6,13 +6,13 @@ import Logico.TipoAlimento;
 public class Panda extends Animal {
     public Panda(Habitat habitat) {
         super(habitat);
-        this.tempMax = 5;
-        this.tempMin = -60;
-        this.granditud = 50;
-        this.comidaPreferida = TipoAlimento.PESCADO;
-        this.humMax = 999999;
-        this.humMin = 999999;
-        this.ferocidad = 99999;
+        this.tempMax = 30;
+        this.tempMin = 0;
+        this.granditud = 100;
+        this.comidaPreferida = TipoAlimento.FOLLAJE;
+        this.humMax = 20;
+        this.humMin = -20;
+        this.ferocidad = 80;
     }
     @Override
     public String getSonido() {

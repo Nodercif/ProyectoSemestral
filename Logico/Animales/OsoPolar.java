@@ -6,13 +6,13 @@ import Logico.TipoAlimento;
 public class OsoPolar extends Animal {
     public OsoPolar(Habitat habitat) {
         super(habitat);
-        this.tempMax = 5;
+        this.tempMax = 20;
         this.tempMin = -60;
-        this.granditud = 50;
+        this.granditud = 100;
         this.comidaPreferida = TipoAlimento.PESCADO;
-        this.humMax = 999999;
-        this.humMin = 999999;
-        this.ferocidad = 99999;
+        this.humMax = 100;
+        this.humMin = 20;
+        this.ferocidad = 100;
     }
     @Override
     public String getSonido() {

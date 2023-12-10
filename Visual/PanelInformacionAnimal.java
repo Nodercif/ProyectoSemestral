@@ -18,7 +18,7 @@ public class PanelInformacionAnimal extends JTextArea {
             this.setBounds(20, 100, 260, 85);
             this.setBackground(new Color(160, 230, 140));
             this.setFont(new Font("Arial", Font.BOLD, 12));
-            this.setText("No hay animales comprados en este habitat.");
+            this.setText("No hay animales comprados en este habitat\no no hay seleccionados.");
         }
         else {
             this.setBounds(20, 100, 260, 85);
@@ -26,7 +26,7 @@ public class PanelInformacionAnimal extends JTextArea {
             this.setFont(new Font("Arial", Font.BOLD, 12));
             this.setText("  Animal: " + animal.getEspecie() + ".\n  Nombre: " + /*animal.getNombre +*/
                     ".\n  Temperaturas optimas:\n  Desde los " + animal.getMinTemp() + " grados hasta los " + animal.getMaxTemp() +
-                    " grados.\n  Humedad optima: Desde " + animal.getMinHum() + " a " + animal.getMinHum() +
+                    " grados.\n  Humedad optima: Desde " + animal.getMinHum() + " a " + animal.getMaxHum() +
                     ".\n  Tamaño del animal: " + animal.getGranditud() + ".");
             this.setEditable(false);
         }

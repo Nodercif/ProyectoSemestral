@@ -21,7 +21,8 @@ public class MenuDeInformacion extends JPanel{
     private JLabel informacionAnimalLabel;
     private JTextArea informacionHabitat;
     private PanelInformacionAnimal panelInformacionAnimal;
-    private int poscicionListaAnimales;
+    private int posicionListaAnimales;
+    private Animal animal = null;
 
     public MenuDeInformacion(MenuDeCompra menuDeCompra) {
         // Panel:
@@ -29,7 +30,7 @@ public class MenuDeInformacion extends JPanel{
         this.setVisible(false);
         this.setBackground(new Color(220, 250, 180));
         this.setBorder(new LineBorder(Color.gray,5));
-        poscicionListaAnimales = 0;
+        posicionListaAnimales = 0;
         // Etiquetas:
         informacionHabitatLabel = new JLabel("Informacion Habitat");
         informacionHabitatLabel.setBounds(90, 190, 300, 10);
@@ -38,7 +39,6 @@ public class MenuDeInformacion extends JPanel{
         // Menus:
         this.menuDeCompra = menuDeCompra;
         panelInformacionAnimal = new PanelInformacionAnimal();
-        Animal animal = null;
         panelInformacionAnimal.setAnimal(animal);
         // Menu de informacion de habitat:
         informacionHabitat = new JTextArea();
@@ -91,7 +91,7 @@ public class MenuDeInformacion extends JPanel{
                 cantidadAnimales + ".\n\n  Carne: " + habitat.getCantCarne() + ".\n\n  Pescado: " + habitat.getCantPescado() +
                 ".\n\n  Follaje: " + habitat.getCantFollaje() + ".\n\n  Fruta: " + habitat.getCantFruta() + ".");
         ////////////////////////////////////INFORMACION HABITAT////////////////////////////////////
-
+        panelInformacionAnimal.setAnimal(animal);
         //Mostrar panel segun habitat seleccionada:
         if(habitatSeleccionado < 2){
             this.setBounds(690, 50, 300, 480);
@@ -110,25 +110,25 @@ public class MenuDeInformacion extends JPanel{
     }
     public void incrementarPoscicion() {
         if(habitat.getAnimales().size() > 0) {
-            if(poscicionListaAnimales < habitat.getAnimales().size() - 1) {
-                poscicionListaAnimales ++;
+            if(posicionListaAnimales < habitat.getAnimales().size() - 1) {
+                posicionListaAnimales++;
             }
             else {
-                poscicionListaAnimales = 0;
+                posicionListaAnimales = 0;
             }
         }
-        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(poscicionListaAnimales));
+        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
     }
     public void disminuirPoscicion() {
         if(habitat.getAnimales().size() > 0) {
-            if(poscicionListaAnimales > 0) {
-                poscicionListaAnimales --;
+            if(posicionListaAnimales > 0) {
+                posicionListaAnimales--;
             }
             else {
-                poscicionListaAnimales = habitat.getAnimales().size() - 1;
+                posicionListaAnimales = habitat.getAnimales().size() - 1;
             }
         }
-        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(poscicionListaAnimales));
+        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
     }
     public void cerrarMenu(){
         this.setVisible(false);

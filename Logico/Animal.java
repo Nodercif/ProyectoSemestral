@@ -19,6 +19,7 @@ public abstract class Animal {
 
     /** que tan genial es el animal. la gente paga mas por ver un oso panda que una vaca */
     protected int atractividad;
+    /** La categoria de alimento que este animal puede consumir*/
     protected TipoAlimento comidaPreferida;
     /** el habitat en el que reside este animal*/
     private Habitat habitat;
@@ -38,7 +39,7 @@ public abstract class Animal {
     }
     /** el animal da un bocado de la comida disponible, dependiendo de su tamaño y cuanta hambre tiene*/
     public void comerAlimento() {
-        int bocado = (int)((granditud * 0.8) + (hambre * 0.2));
+        int bocado = (int)((granditud * 0.2) + (hambre * 0.2));
         hambre -= habitat.quitarComida(bocado, comidaPreferida);
         if(hambre < 0) {
             hambre = 0;

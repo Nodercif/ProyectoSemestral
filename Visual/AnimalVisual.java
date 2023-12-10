@@ -38,7 +38,7 @@ public class AnimalVisual extends Mob {
         super.tick();
         if(rand.nextInt(1000)<5)
             addDestino(rand.nextInt(panelHabitat.getWidth()-50), rand.nextInt(panelHabitat.getHeight()-40));
-        if(rand.nextInt(1000)<15){
+        if(rand.nextInt(1000)==69){
             animal.pasoTiempo();
             animal.comerAlimento();
         }

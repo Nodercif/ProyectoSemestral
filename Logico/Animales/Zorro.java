@@ -13,6 +13,7 @@ public class Zorro extends Animal {
         this.humMax = 999999;
         this.humMin = 999999;
         this.ferocidad = 99999;
+        this.atractividad = 50;
     }
     @Override
     public String getSonido() {

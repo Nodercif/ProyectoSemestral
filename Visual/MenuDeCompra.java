@@ -92,7 +92,6 @@ public class MenuDeCompra extends JPanel{
             botonMoverseDerecha.setVisible(true);
         }
         addBotonesQueEstamosUsando();
-
     }
     /** quita los botones que ya estan, aumenta el indice en uno y despues coloca los correctos*/
     private void desplazarseDerecha(){
@@ -205,6 +204,7 @@ public class MenuDeCompra extends JPanel{
                 habitat.addComida(20, TipoAlimento.CARNE);
                 ZooManager.getInstance().removeMoney(200);
                 break;
+
             // Comida follaje:
             case 2:
                 habitat.addComida(50, TipoAlimento.FOLLAJE);

@@ -29,6 +29,7 @@ public class MenuDeInformacion extends JPanel{
         this.setVisible(false);
         this.setBackground(new Color(220, 250, 180));
         this.setBorder(new LineBorder(Color.gray,5));
+        poscicionListaAnimales = 0;
         // Etiquetas:
         informacionHabitatLabel = new JLabel("Informacion Habitat");
         informacionHabitatLabel.setBounds(90, 190, 300, 10);
@@ -37,6 +38,8 @@ public class MenuDeInformacion extends JPanel{
         // Menus:
         this.menuDeCompra = menuDeCompra;
         panelInformacionAnimal = new PanelInformacionAnimal();
+        Animal animal = null;
+        panelInformacionAnimal.setAnimal(animal);
         // Menu de informacion de habitat:
         informacionHabitat = new JTextArea();
         informacionHabitat.setBounds(20, 210, 260, 170);
@@ -107,14 +110,14 @@ public class MenuDeInformacion extends JPanel{
     }
     public void incrementarPoscicion() {
         if(habitat.getAnimales().size() > 0) {
-            if(poscicionListaAnimales < habitat.getAnimales().size()) {
+            if(poscicionListaAnimales < habitat.getAnimales().size() - 1) {
                 poscicionListaAnimales ++;
             }
             else {
                 poscicionListaAnimales = 0;
             }
         }
-        panelInformacionAnimal.setAnimal(habitat.getAnimales().get(poscicionListaAnimales));
+        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(poscicionListaAnimales));
     }
     public void disminuirPoscicion() {
         if(habitat.getAnimales().size() > 0) {
@@ -122,10 +125,10 @@ public class MenuDeInformacion extends JPanel{
                 poscicionListaAnimales --;
             }
             else {
-                poscicionListaAnimales = habitat.getAnimales().size();
+                poscicionListaAnimales = habitat.getAnimales().size() - 1;
             }
         }
-        panelInformacionAnimal.setAnimal(habitat.getAnimales().get(poscicionListaAnimales));
+        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(poscicionListaAnimales));
     }
     public void cerrarMenu(){
         this.setVisible(false);

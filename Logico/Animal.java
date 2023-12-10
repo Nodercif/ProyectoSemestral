@@ -68,6 +68,7 @@ public abstract class Animal {
     public int getMinHum(){return this.humMin;}
     public int getAtractividad(){return this.atractividad;}
     public int getFerocidad(){return  this.ferocidad;}
+    public int getGranditud(){return this.granditud;}
     public String getNombre(){return  this.nombre;}
     public abstract String getEspecie();
     public abstract int getPrecio();

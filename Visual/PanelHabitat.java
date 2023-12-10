@@ -34,9 +34,25 @@ public class PanelHabitat extends JPanel {
         while(iterator.hasNext()){
             AnimalVisual a = iterator.next();
             a.tick();
-            if(habitat.getTemperatura()>a.animal.getMaxTemp() && rand.nextInt(100)==69){
+            if(habitat.getTemperatura()>a.animal.getMaxTemp() && rand.nextInt(200)==69){
                 a.animal.morir();
-                PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(a.animal.getNombre()+" el "+a.animal.getEspecie()+" se a muerto de calor",new Point(getX(),getY())));
+                IconoInformacion mensajeDeMuerte =new IconoInformacion(a.animal.getNombre()+" el "+a.animal.getEspecie()+" se a muerto de calor",getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(mensajeDeMuerte);
+            }
+            if(habitat.getTemperatura()<a.animal.getMinTemp() && rand.nextInt(200)==69){
+                a.animal.morir();
+                IconoInformacion mensajeDeMuerte = new IconoInformacion(a.animal.getNombre()+" el "+a.animal.getEspecie()+" se murio de frio",getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(mensajeDeMuerte);
+            }
+            if(habitat.getHumedad()>a.animal.getMaxHum() && rand.nextInt(200)==69){
+                a.animal.morir();
+                IconoInformacion mensajeDeMuerte = new IconoInformacion(a.animal.getNombre()+" el "+a.animal.getEspecie()+" se murio por estar muy humedo",getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(mensajeDeMuerte);
+            }
+            if(habitat.getHumedad()<a.animal.getMinHum() && rand.nextInt(200)==69){
+                a.animal.morir();
+                IconoInformacion mensajeDeMuerte = new IconoInformacion(a.animal.getNombre()+" el "+a.animal.getEspecie()+" se murio de seco",getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(mensajeDeMuerte);
             }
             if(!a.estaVivo()){
                 iterator.remove();

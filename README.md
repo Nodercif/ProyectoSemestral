@@ -9,6 +9,6 @@ Durante el desarrollo de este proyecto tuvimos que hacer deciciones acerca de el
 Mientras estabamos haciendo este proyecto, nos encontramos con un bug muy complicado, en el que el menu de compra no se desplegaba cuando debia hacerse. Nos dimos muchas vueltas y nos dio mucho dolor de cabeza. Al dia siguiente, viendo otra parte del programa nos dimos cuenta cual era el error. Este estaba en una parte distinta del programa de donde esperabamos inicialmente.
 ![El increible zoologico digital](https://github.com/Nodercif/ProyectoSemestral/assets/59321776/0e9e7154-ccf2-4b65-97d0-d1bc9f182971)
 
-[El increible zoologico digital.pdf](https://github.com/Nodercif/ProyectoSemestral/files/13630452/El.increible.zoologico.digital.pdf)
+diagramas uml: [El increible zoologico digital.pdf](https://github.com/Nodercif/ProyectoSemestral/files/13630452/El.increible.zoologico.digital.pdf)
 
 ![capturaDePantalla](https://github.com/Nodercif/ProyectoSemestral/assets/59321776/bd34a14b-88f0-442a-abbb-e9656d86bb64)

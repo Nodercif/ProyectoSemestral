@@ -36,6 +36,22 @@ public class ZooManager {
         this.money -= costo;
         return true;
     }
+    public boolean comprarComida(int cantidad,TipoAlimento tipoAlimento, int costo, int habitatSeleccionado){
+        if(costo > money){
+            return false;
+        }
+        habitats[habitatSeleccionado].addComida(cantidad,tipoAlimento);
+        this.money -= costo;
+        return true;
+    }
+    public boolean comprarAnimal(Animal animal, int costo, int habitatSeleccionado){
+        if(costo>money){
+            return false;
+        }
+        habitats[habitatSeleccionado].addAnimal(animal);
+        this.money -= costo;
+        return true;
+    }
 
     /** El método addMoney es llamado cuando se requiere agregar dinero. */
     public void addMoney(int cantidad){this.money += cantidad;}

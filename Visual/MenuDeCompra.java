@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
-
+/** un panel que va a manejar todas las compras*/
 public class MenuDeCompra extends JPanel{
     /**te fijas como te 'mueves' al apretar la flecha para ver mas botones? esto es esa poscicion*/
     private int indiceDisplayBotones;
@@ -20,6 +20,7 @@ public class MenuDeCompra extends JPanel{
     public static final int COMPRAHABITAT = 1;
     public static final int COMPRAANIMAL = 2;
     public static final int COMPRACOMIDA = 3;
+    /**en el constructor se crean todos los botones que se van a nececitar*/
     public MenuDeCompra() {
         this.setVisible(false);
         botonesDeCompraHabitat = new ArrayList<>();
@@ -66,6 +67,12 @@ public class MenuDeCompra extends JPanel{
         botonMoverseIzquierda.addActionListener(e -> desplazarseIzquierda());
         botonMoverseIzquierda.setBounds(20,30,60,60);
     }
+
+    /**
+     * al abrir el menu se vuelve visible el panel y se le añaden los botones apropiados
+     * @param habitatSeleccionado para cual de los cinco habitats se va a hacer la compra
+     * @param tipoCompra si vamos a comprar animales comida o habitats
+     */
     public void abrirMenu(int habitatSeleccionado, int tipoCompra) {
         cerrarMenu();
         this.add(botonMoverseDerecha);
@@ -156,9 +163,7 @@ public class MenuDeCompra extends JPanel{
                     imagen = (new ImageIcon("recursos/habitats/habitatBosque.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
                     panelHabitatSeleccionado.setHabitat(habitat);
                     panelHabitatSeleccionado.setImagenHabitat(imagen);
-                    Point pos =botonesDeCompraHabitat.get(0).getLocation();
-                    pos.x += this.getX();  pos.y += this.getY();
-                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,new Point(1010,40)));
                 }else{
                     Point pos =botonesDeCompraHabitat.get(0).getLocation();
                     pos.x += this.getX();  pos.y += this.getY();
@@ -174,14 +179,11 @@ public class MenuDeCompra extends JPanel{
                     imagen = (new ImageIcon("recursos/habitats/habitatSabana.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
                     panelHabitatSeleccionado.setHabitat(habitat);
                     panelHabitatSeleccionado.setImagenHabitat(imagen);
-                    Point pos =botonesDeCompraHabitat.get(1).getLocation();
-                    pos.x += this.getX();  pos.y += this.getY();
-                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,new Point(1010,40)));
                 }else{
                     Point pos =botonesDeCompraHabitat.get(1).getLocation();
                     pos.x += this.getX();  pos.y += this.getY();
                     IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",pos);
-                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
                     PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
                 }
                 break;
@@ -193,9 +195,7 @@ public class MenuDeCompra extends JPanel{
                     imagen = (new ImageIcon("recursos/habitats/habitatDesierto.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
                     panelHabitatSeleccionado.setHabitat(habitat);
                     panelHabitatSeleccionado.setImagenHabitat(imagen);
-                    Point pos =botonesDeCompraHabitat.get(2).getLocation();
-                    pos.x += this.getX();  pos.y += this.getY();
-                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,new Point(1010,40)));
                 }else{
                     Point pos =botonesDeCompraHabitat.get(2).getLocation();
                     pos.x += this.getX();  pos.y += this.getY();
@@ -211,9 +211,7 @@ public class MenuDeCompra extends JPanel{
                     imagen = (new ImageIcon("recursos/habitats/habitatAcuatica.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
                     panelHabitatSeleccionado.setHabitat(habitat);
                     panelHabitatSeleccionado.setImagenHabitat(imagen);
-                    Point pos =botonesDeCompraHabitat.get(3).getLocation();
-                    pos.x += this.getX();  pos.y += this.getY();
-                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,new Point(1010,40)));
                 }else{
                     Point pos =botonesDeCompraHabitat.get(3).getLocation();
                     pos.x += this.getX();  pos.y += this.getY();
@@ -229,9 +227,7 @@ public class MenuDeCompra extends JPanel{
                     imagen = (new ImageIcon("recursos/habitats/habitatPolar.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
                     panelHabitatSeleccionado.setHabitat(habitat);
                     panelHabitatSeleccionado.setImagenHabitat(imagen);
-                    Point pos =botonesDeCompraHabitat.get(4).getLocation();
-                    pos.x += this.getX();  pos.y += this.getY();
-                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,new Point(1010,40)));
                 }else{
                     Point pos =botonesDeCompraHabitat.get(4).getLocation();
                     pos.x += this.getX();  pos.y += this.getY();
@@ -247,24 +243,36 @@ public class MenuDeCompra extends JPanel{
         switch (tipoComida) {
             // Comida carne:
             case 1:
-                habitat.addComida(20, TipoAlimento.CARNE);
-                ZooManager.getInstance().removeMoney(200);
+                if(ZooManager.getInstance().comprarComida(30,TipoAlimento.CARNE,200,numeroHabitatSeleccionado)){
+                    IconoInformacion masComida = new IconoInformacion(30,TipoAlimento.CARNE,panelHabitatSeleccionado.getLocation());
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(masComida);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-200,IconoInformacion.DINERO,new Point(1010,40)));
+                }
                 break;
 
             // Comida follaje:
             case 2:
-                habitat.addComida(50, TipoAlimento.FOLLAJE);
-                ZooManager.getInstance().removeMoney(200);
+                if(ZooManager.getInstance().comprarComida(30,TipoAlimento.FOLLAJE,200,numeroHabitatSeleccionado)){
+                    IconoInformacion masComida = new IconoInformacion(30,TipoAlimento.FOLLAJE,panelHabitatSeleccionado.getLocation());
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(masComida);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-200,IconoInformacion.DINERO,new Point(1010,40)));
+                }
                 break;
             // Comida pescado:
             case 3:
-                habitat.addComida(30, TipoAlimento.PESCADO);
-                ZooManager.getInstance().removeMoney(200);
+                if(ZooManager.getInstance().comprarComida(30,TipoAlimento.PESCADO,200,numeroHabitatSeleccionado)){
+                    IconoInformacion masComida = new IconoInformacion(30,TipoAlimento.PESCADO,panelHabitatSeleccionado.getLocation());
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(masComida);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-200,IconoInformacion.DINERO,new Point(1010,40)));
+                }
                 break;
             // Comida fruta:
             case 4:
-                habitat.addComida(40, TipoAlimento.FRUTA);
-                ZooManager.getInstance().removeMoney(200);
+                if(ZooManager.getInstance().comprarComida(30,TipoAlimento.FRUTA,200,numeroHabitatSeleccionado)){
+                    IconoInformacion masComida = new IconoInformacion(30,TipoAlimento.FRUTA,panelHabitatSeleccionado.getLocation());
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(masComida);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-200,IconoInformacion.DINERO,new Point(1010,40)));
+                }
                 break;
         }
     }
@@ -327,11 +335,17 @@ public class MenuDeCompra extends JPanel{
         AnimalVisual animalVisual;
         try {
             animal = (Animal)claseAnimal.getDeclaredConstructor(Habitat.class).newInstance(habitat);
-            animalVisual = new AnimalVisual(panelHabitatSeleccionado, animal);
-            animalVisual.setImagen((new ImageIcon("recursos/animales/" + animal.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH));
-            habitat.addAnimal(animal);
-            panelHabitatSeleccionado.addAnimal(animalVisual);
-            ZooManager.getInstance().removeMoney(animal.getPrecio());
+            if(ZooManager.getInstance().comprarAnimal(animal,animal.getPrecio(),numeroHabitatSeleccionado)){
+                animalVisual = new AnimalVisual(panelHabitatSeleccionado, animal);
+                animalVisual.setImagen((new ImageIcon("recursos/animales/" + animal.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH));
+                panelHabitatSeleccionado.addAnimal(animalVisual);
+                IconoInformacion menosDinero = new IconoInformacion(-1*animal.getPrecio(),IconoInformacion.DINERO,panelHabitatSeleccionado.getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(menosDinero);
+            }else{
+                System.out.println("dinero insufcinet");
+                IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",new Point(panelHabitatSeleccionado.getLocation()));
+                PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

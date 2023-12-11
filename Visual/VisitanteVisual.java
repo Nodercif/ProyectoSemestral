@@ -63,8 +63,8 @@ public class VisitanteVisual extends Mob{
             Habitat habitat = InformacionCaminos.getInstance().getHabitat(indiceCruze);
             if(habitat!=null){
                 visitante.observarHabitat(habitat);
-                ZooManager.getInstance().addMoney(visitante.getAsombro());
-                PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(visitante.getAsombro()*7,IconoInformacion.DINERO,getPoint()));
+                ZooManager.getInstance().addMoney(visitante.getAsombro()*2);
+                PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(visitante.getAsombro()*2,IconoInformacion.DINERO,getPoint()));
                 coolDownObservacion=100;
             }
         }

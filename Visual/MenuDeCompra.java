@@ -152,46 +152,92 @@ public class MenuDeCompra extends JPanel{
             // Habitat bosque:
             case 1:
                 habitat = new Habitat(15, 30);
-                imagen = (new ImageIcon("recursos/habitats/habitatBosque.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado);
-                panelHabitatSeleccionado.setHabitat(habitat);
-                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                if(ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado)){
+                    imagen = (new ImageIcon("recursos/habitats/habitatBosque.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                    panelHabitatSeleccionado.setHabitat(habitat);
+                    panelHabitatSeleccionado.setImagenHabitat(imagen);
+                    Point pos =botonesDeCompraHabitat.get(0).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                }else{
+                    Point pos =botonesDeCompraHabitat.get(0).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",pos);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
+                }
                 break;
 
             // Habitat sabana:
             case 2:
                 habitat = new Habitat(30, -30);
-                imagen = (new ImageIcon("recursos/habitats/habitatSabana.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 5000, numeroHabitatSeleccionado);
-                panelHabitatSeleccionado.setHabitat(habitat);
-                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                if(ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado)){
+                    imagen = (new ImageIcon("recursos/habitats/habitatSabana.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                    panelHabitatSeleccionado.setHabitat(habitat);
+                    panelHabitatSeleccionado.setImagenHabitat(imagen);
+                    Point pos =botonesDeCompraHabitat.get(1).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                }else{
+                    Point pos =botonesDeCompraHabitat.get(1).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",pos);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
+                }
                 break;
 
             // Habitat desierto:
             case 3:
                 habitat = new Habitat(40, -40);
-                imagen = (new ImageIcon("recursos/habitats/habitatDesierto.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 7000, numeroHabitatSeleccionado);
-                panelHabitatSeleccionado.setHabitat(habitat);
-                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                if(ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado)){
+                    imagen = (new ImageIcon("recursos/habitats/habitatDesierto.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                    panelHabitatSeleccionado.setHabitat(habitat);
+                    panelHabitatSeleccionado.setImagenHabitat(imagen);
+                    Point pos =botonesDeCompraHabitat.get(2).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                }else{
+                    Point pos =botonesDeCompraHabitat.get(2).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",pos);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
+                }
                 break;
 
             // Habitat acuatica:
             case 4:
                 habitat = new Habitat(25, 100);
-                imagen = (new ImageIcon("recursos/habitats/habitatAcuatica.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 9000, numeroHabitatSeleccionado);
-                panelHabitatSeleccionado.setHabitat(habitat);
-                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                if(ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado)){
+                    imagen = (new ImageIcon("recursos/habitats/habitatAcuatica.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                    panelHabitatSeleccionado.setHabitat(habitat);
+                    panelHabitatSeleccionado.setImagenHabitat(imagen);
+                    Point pos =botonesDeCompraHabitat.get(3).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                }else{
+                    Point pos =botonesDeCompraHabitat.get(3).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",pos);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
+                }
                 break;
 
             // Habitat polar:
             case 5:
                 habitat = new Habitat(-40, 100);
-                imagen = (new ImageIcon("recursos/habitats/habitatPolar.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
-                ZooManager.getInstance().comprarHabitat(habitat, 11000, numeroHabitatSeleccionado);
-                panelHabitatSeleccionado.setHabitat(habitat);
-                panelHabitatSeleccionado.setImagenHabitat(imagen);
+                if(ZooManager.getInstance().comprarHabitat(habitat, 3000, numeroHabitatSeleccionado)){
+                    imagen = (new ImageIcon("recursos/habitats/habitatPolar.png")).getImage().getScaledInstance(300,160,Image.SCALE_SMOOTH);
+                    panelHabitatSeleccionado.setHabitat(habitat);
+                    panelHabitatSeleccionado.setImagenHabitat(imagen);
+                    Point pos =botonesDeCompraHabitat.get(4).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(new IconoInformacion(-3000,IconoInformacion.DINERO,pos));
+                }else{
+                    Point pos =botonesDeCompraHabitat.get(4).getLocation();
+                    pos.x += this.getX();  pos.y += this.getY();
+                    IconoInformacion dineroInsuficiente = new IconoInformacion("dinero insuficiente!",pos);
+                    PanelPrincipal.getInstance().mostrarIconoInformacion(dineroInsuficiente);
+                }
                 break;
         }
         cerrarMenu();

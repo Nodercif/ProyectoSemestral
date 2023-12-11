@@ -110,7 +110,7 @@ public class MenuDeInformacion extends JPanel{
 
         this.setVisible(true);
     }
-    
+
     public void incrementarPoscicion() {
         if(!habitat.getAnimales().isEmpty()) {
             if(posicionListaAnimales < habitat.getAnimales().size() - 1) {

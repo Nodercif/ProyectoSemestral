@@ -26,10 +26,15 @@ public class ZooManager {
     /** El método comprarHabitat sirve para hacer la compra de un habitat.
      * @param compra es el habitat que se compró.
      * @param costo es el valor del habitat. Éste será restado a la cantidad de dinero almacenada..
-     * @param habitatSeleccionada es el identificador del habitat, ésta será su poscicion en el ArrayList. */
-    public void comprarHabitat(Habitat compra, int costo, int habitatSeleccionada) {
+     * @param habitatSeleccionada es el identificador del habitat, ésta será su poscicion en el ArrayList.
+     * @return booleano, si funciono o no la compra*/
+    public boolean comprarHabitat(Habitat compra, int costo, int habitatSeleccionada) {
+        if(costo > money){
+            return false;
+        }
         habitats[habitatSeleccionada] = compra;
         this.money -= costo;
+        return true;
     }
 
     /** El método addMoney es llamado cuando se requiere agregar dinero. */

@@ -21,6 +21,8 @@ public class MenuDeInformacion extends JPanel{
     private JLabel informacionAnimalLabel;
     private JTextArea informacionHabitat;
     private PanelInformacionAnimal panelInformacionAnimal;
+    private Image imagenAnimalSeleccionado;
+    private JPanel panelImagenAnimal;
     private int posicionListaAnimales;
     private Animal animal = null;
 
@@ -62,6 +64,8 @@ public class MenuDeInformacion extends JPanel{
         botonComprarComida.addActionListener(e -> abrirMenuCompraComida());
         cambiarAnimalIzquierda.addActionListener(e -> disminuirPoscicion());
         cambiarAnimalDerecha.addActionListener(e -> incrementarPoscicion());
+        //Imagen animal:
+        imagenAnimalSeleccionado = null;
         //Agregar al panel:
         this.add(informacionHabitatLabel);
         this.add(informacionAnimalLabel);
@@ -117,7 +121,9 @@ public class MenuDeInformacion extends JPanel{
                 posicionListaAnimales = 0;
             }
         }
-        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
+        Animal animalSeleccionado = panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales);
+        panelInformacionAnimal.setAnimal(animalSeleccionado);
+        imagenAnimalSeleccionado = (new ImageIcon("recursos/animales/" + animalSeleccionado.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(300,300,Image.SCALE_SMOOTH);
     }
     public void disminuirPoscicion() {
         if(habitat.getAnimales().size() > 0) {
@@ -128,7 +134,10 @@ public class MenuDeInformacion extends JPanel{
                 posicionListaAnimales = habitat.getAnimales().size() - 1;
             }
         }
-        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
+        Animal animalSeleccionado = panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales);
+        panelInformacionAnimal.setAnimal(animalSeleccionado);
+        imagenAnimalSeleccionado = (new ImageIcon("recursos/animales/" + animalSeleccionado.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(300,300,Image.SCALE_SMOOTH);
+
     }
     public void cerrarMenu(){
         this.setVisible(false);
@@ -137,4 +146,10 @@ public class MenuDeInformacion extends JPanel{
         }
     }
     public PanelHabitat getPanelHabitatSeleccionado(){ return panelHabitatSeleccionado; }
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if(imagenAnimalSeleccionado != null) {
+            g.drawImage(imagenAnimalSeleccionado, 120, 35, 60, 60, this);
+        }
+    }
 }

@@ -273,7 +273,6 @@ public class MenuDeCompra extends JPanel{
                 comprarAnimal(Informatico.class);
                 break;
         }
-        //TODO resto de animales
     }
     public <T> void comprarAnimal(Class<T> claseAnimal) {
         Habitat habitat = panelHabitatSeleccionado.getHabitat();

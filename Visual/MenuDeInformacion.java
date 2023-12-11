@@ -11,7 +11,7 @@ public class MenuDeInformacion extends JPanel{
     private int numeroHabitatSeleccionado;
     private PanelHabitat panelHabitatSeleccionado;
     private ArrayList<AnimalVisual> animalesVisuales;
-    public Habitat habitat;
+    private Habitat habitat;
     private MenuDeCompra menuDeCompra;
     private JButton botonComprarAnimal;
     private JButton botonComprarComida;
@@ -19,7 +19,7 @@ public class MenuDeInformacion extends JPanel{
     private JButton cambiarAnimalDerecha;
     private JLabel informacionHabitatLabel;
     private JLabel informacionAnimalLabel;
-    public JTextArea informacionHabitat;
+    private JTextArea informacionHabitat;
     private PanelInformacionAnimal panelInformacionAnimal;
     private int posicionListaAnimales;
     private Animal animal = null;

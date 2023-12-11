@@ -7,6 +7,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+/** La siguiente clase representa un panel de informacion úytil acerca del habitat que fue seleccionada
+ y los animales que ésta contiene. */
 public class MenuDeInformacion extends JPanel{
     private int numeroHabitatSeleccionado;
     private PanelHabitat panelHabitatSeleccionado;
@@ -26,6 +28,9 @@ public class MenuDeInformacion extends JPanel{
     private int posicionListaAnimales;
     private Animal animal = null;
 
+    /** Mediante el constructor se inicializan las variables privadas y se organiza la estructura del menú:
+     sus botones, los cuadros de texto, coordenadas y colores.
+     @param menuDeCompra es el menú que sirve para comprar habitats, animales y comida. */
     public MenuDeInformacion(MenuDeCompra menuDeCompra) {
         // Panel:
         this.setLayout(null);
@@ -69,7 +74,7 @@ public class MenuDeInformacion extends JPanel{
             cerrarMenu();
         });
         cambiarAnimalIzquierda.addActionListener(e -> disminuirPoscicion());
-        cambiarAnimalDerecha.addActionListener(e -> incrementarPoscicion());
+        cambiarAnimalDerecha.addActionListener(e -> incrementarPocicion());
         //Imagen animal:
         imagenAnimalSeleccionado = null;
         //Agregar al panel:
@@ -81,6 +86,9 @@ public class MenuDeInformacion extends JPanel{
         this.add(cambiarAnimalDerecha);
         this.add(panelInformacionAnimal);
     }
+
+    /** El método abrirMenu sirve para que el menú de informacion se abra cuando un habitat ocupada es seleccionada.
+     * @param habitatSeleccionado es el habitat ocupada que se seleccionó. */
     public void abrirMenu(int habitatSeleccionado){
         cerrarMenu();
         numeroHabitatSeleccionado = habitatSeleccionado;
@@ -109,13 +117,14 @@ public class MenuDeInformacion extends JPanel{
             this.setBounds(120, 50, 300, 480);
         }
         //para seleccionar un animal al empezar
-        incrementarPoscicion();
+        incrementarPocicion();
         disminuirPoscicion();
 
         this.setVisible(true);
     }
 
-    public void incrementarPoscicion() {
+    /** incrementarPocicion es un método que se ocupa cuando se apreta el botón de la derecha en el menú. */
+    public void incrementarPocicion() {
         if(!habitat.getAnimales().isEmpty()) {
             if(posicionListaAnimales < habitat.getAnimales().size() - 1) {
                 posicionListaAnimales++;
@@ -128,6 +137,8 @@ public class MenuDeInformacion extends JPanel{
             imagenAnimalSeleccionado = (new ImageIcon("recursos/animales/" + animalSeleccionado.getEspecie().replaceAll("\\s", "") + ".png")).getImage().getScaledInstance(300,300,Image.SCALE_SMOOTH);
         }
     }
+
+    /** disminuirPocicion es un método que se ocupa cuando se apreta el botón de la izquierda en el menú. */
     public void disminuirPoscicion() {
         if(!habitat.getAnimales().isEmpty()) {
             if(posicionListaAnimales > 0) {
@@ -142,6 +153,9 @@ public class MenuDeInformacion extends JPanel{
         }
 
     }
+
+    /** cerrarMenu cierra el menú de informacion cuando se hace click fuera de éste o cuando se selecciona
+     uno de los botones de compra. */
     public void cerrarMenu(){
         this.setVisible(false);
         if(panelHabitatSeleccionado != null) {

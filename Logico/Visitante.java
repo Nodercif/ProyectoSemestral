@@ -2,16 +2,23 @@ package Logico;
 
 import java.util.Random;
 
+/** La siguiente clase representa a los visitantes que ingresan al zoologico. */
 public class Visitante {
     protected Random rand = new Random();
     protected String nombre;
     protected String archivoImagen;
     Animal animalFavorito;
     protected int asombro;
+
+    /** Mediante el constructor se le asigna un nombre aleatorio y una imagen al visitante. Los nombres son
+     tomados de un archivo .txt. */
     public Visitante() {
         this.nombre = InformacionVisitantes.getInstance().nombreRandom();
         this.archivoImagen = "recursos/visitantes/visitanteGenerico"+rand.nextInt(8)+".png";
     }
+
+    /** El método observarHabitat sirve para generar dinero según el animal que el visitante observe.
+     * @param  hab es el habitat al cual el visitante llegó. */
     public String observarHabitat(Habitat hab) {
         asombro = 0;
         String ret = "comentario hacerca del habitat";
@@ -22,7 +29,6 @@ public class Visitante {
                 ret = "Wow, ¡Es mi animal favorito! Un " + animalFavorito.getEspecie() + ".";
             }
         }
-        //TODO añadir mas comentarios de otros casos (habitat vacio, pocos animales...)
         return ret;
     }
     public String comentarioRandom(){

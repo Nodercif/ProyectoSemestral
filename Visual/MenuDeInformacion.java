@@ -118,6 +118,7 @@ public class MenuDeInformacion extends JPanel{
             }
         }
         panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
+
     }
     public void disminuirPoscicion() {
         if(habitat.getAnimales().size() > 0) {

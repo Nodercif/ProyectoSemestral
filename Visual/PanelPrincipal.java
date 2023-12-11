@@ -74,6 +74,7 @@ public class PanelPrincipal extends JPanel {
                         }else{
                             // Abrir panel informacion
                             menuDeInformacion.abrirMenu(contador);
+                            menuDeCompra.cerrarMenu();
                         }
                     }
                     contador += 1;
@@ -108,8 +109,6 @@ public class PanelPrincipal extends JPanel {
             panelesHabitat[i].tick();
         }
         contadorDeDinero.setText("Dinero: " + ZooManager.getInstance().getMoney());
-
-        visitantes.removeIf(vis -> vis.satisfecho&&vis.enLaSalida());
         iconosInfo.removeIf(info -> info.tick() == 0);
     }
     /**Añade un iconoDeInformacion al panel. De esos que suben y se desvanecen*/

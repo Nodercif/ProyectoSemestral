@@ -58,8 +58,14 @@ public class MenuDeInformacion extends JPanel{
         cambiarAnimalIzquierda.setBounds(40, 50, 50, 30);
         cambiarAnimalDerecha.setBounds(210, 50, 50, 30);
         //Asignar accion:
-        botonComprarAnimal.addActionListener(e -> abrirMenuCompraAnimal());
-        botonComprarComida.addActionListener(e -> abrirMenuCompraComida());
+        botonComprarAnimal.addActionListener(e -> {
+            menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRAANIMAL);
+            cerrarMenu();
+        });
+        botonComprarComida.addActionListener(e -> {
+            menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRACOMIDA);
+            cerrarMenu();
+        });
         cambiarAnimalIzquierda.addActionListener(e -> disminuirPoscicion());
         cambiarAnimalDerecha.addActionListener(e -> incrementarPoscicion());
         //Agregar al panel:
@@ -98,38 +104,35 @@ public class MenuDeInformacion extends JPanel{
         }else{
             this.setBounds(120, 50, 300, 480);
         }
+        //para seleccionar un animal al empezar
+        incrementarPoscicion();
+        disminuirPoscicion();
+
         this.setVisible(true);
     }
-    public void abrirMenuCompraAnimal() {
-        menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRAANIMAL);
-        cerrarMenu();
-    }
-    public void abrirMenuCompraComida() {
-        menuDeCompra.abrirMenu(numeroHabitatSeleccionado, MenuDeCompra.COMPRACOMIDA);
-        cerrarMenu();
-    }
+    
     public void incrementarPoscicion() {
-        if(habitat.getAnimales().size() > 0) {
+        if(!habitat.getAnimales().isEmpty()) {
             if(posicionListaAnimales < habitat.getAnimales().size() - 1) {
                 posicionListaAnimales++;
             }
             else {
                 posicionListaAnimales = 0;
             }
+            panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
         }
-        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
 
     }
     public void disminuirPoscicion() {
-        if(habitat.getAnimales().size() > 0) {
+        if(!habitat.getAnimales().isEmpty()) {
             if(posicionListaAnimales > 0) {
                 posicionListaAnimales--;
             }
             else {
                 posicionListaAnimales = habitat.getAnimales().size() - 1;
             }
+            panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
         }
-        panelInformacionAnimal.setAnimal(panelHabitatSeleccionado.getHabitat().getAnimales().get(posicionListaAnimales));
     }
     public void cerrarMenu(){
         this.setVisible(false);

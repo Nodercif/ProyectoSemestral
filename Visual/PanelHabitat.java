@@ -2,6 +2,7 @@ package Visual;
 
 import Logico.Animal;
 import Logico.Habitat;
+import Logico.TipoAlimento;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +28,11 @@ public class PanelHabitat extends JPanel {
     }
     public void tick(){
         if(habitat != null) if(rand.nextInt(1000)<15){
-            habitat.dueloAnimal();
+            String resultado = habitat.dueloAnimal();
+            if(resultado != null){
+                IconoInformacion inf =new IconoInformacion(resultado,getLocation());
+                PanelPrincipal.getInstance().mostrarIconoInformacion(inf);
+            }
         }
 
         Iterator<AnimalVisual> iterator = animalesVis.iterator();
@@ -56,6 +61,8 @@ public class PanelHabitat extends JPanel {
             }
             if(!a.estaVivo()){
                 iterator.remove();
+                IconoInformacion masCarne = new IconoInformacion(a.animal.getGranditud(), TipoAlimento.CARNE,new Point(a.getPosX()+getX(),a.getPosY()+getY()));
+                PanelPrincipal.getInstance().mostrarIconoInformacion(masCarne);
             }
         }
     }

@@ -1,4 +1,7 @@
 package Logico;
+import Visual.IconoInformacion;
+import Visual.PanelPrincipal;
+
 import java.util.Random;
 
 /**

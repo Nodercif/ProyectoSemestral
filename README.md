@@ -1,6 +1,4 @@
 # ProyectoSemestral
-Este es el proyecto semestral del curso de programacion II en la universidad de Concepción. Corresponde al grupo numero 22 que consiste de:
-Felicia Pino y Gabriela Muñoz
 Este proyecto consiste en la simulación de un zoologico, con distintos habitats y animales. Los animales solo pueden sobrevivir en habitats con con cualidades apropiadas.
 En la propuesta original se dictaba que no fuera posible colocar un animal en un habitat inadecuado, pero hemos decidido que si sea posible y este fallezca despues de un tiempo.
 Con respecto a patrones, el unico patron que utilizamos fue el singleton. Este lo ocupamos varias veces a lo largo del proyecto. Tenemos el singleton ZooManager, que manega las compras y el dinero del zoologico. Lo ocupamos tambien en clases que cargan informacion de archivos, para que asi se pueda acceder a esta informacion y solo se lea la primera vez que se necesite y despues quede guardada en la clase. Ejemplos de esto son las InformacionVisitantes e InformacionCaminos.
